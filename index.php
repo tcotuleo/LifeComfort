@@ -9,6 +9,46 @@ if (isset($_POST['income'])) {
 } else {
     $income = 60000;
 }
+if (isset($_POST['income_change'])) {
+    $income_change = $_POST['income_change'];
+} else {
+    $income_change = .10;
+}
+if (isset($_POST['percent_income'])) {
+    $percent_income = $_POST['percent_income'];
+} else {
+    $percent_income = .10;
+}
+if (isset($_POST['age_retirement'])) {
+    $age_retirement = $_POST['age_retirement'];
+} else {
+    $age_retirement = 65;
+}
+if (isset($_POST['current_savings'])) {
+    $current_savings = $_POST['current_savings'];
+} else {
+    $current_savings = 40000;
+}
+if (isset($_POST['interest_rate'])) {
+    $interest_rate = $_POST['interest_rate'];
+} else {
+    $interest_rate = 6.5;
+}
+if (isset($_POST['year_interest'])) {
+    $year_interest = $_POST['year_interest'];
+} else {
+    $year_interest = 15;
+}
+if (isset($_POST['new_interest'])) {
+    $new_interest = $_POST['new_interest'];
+} else {
+    $new_interest = 7;
+}
+if (isset($_POST['inflation'])) {
+    $inflation = $_POST['inflation'];
+} else {
+    $inflation = .4;
+}
 ?>
 <!DOCTYPE html>
 <html>
@@ -26,9 +66,17 @@ if (isset($_POST['income'])) {
         <form action="index.php" method="post">
             <p>Age: <input type="text" name="age" value=<?php echo $age ?> /><br>
                Income: <input type="text" name="income" value=<?php echo $income ?> /><br>
+               Income Change: <input type="text" name="income_change" value=<?php echo $income_change ?> /><br>
+               Percent of Income Contribution: <input type="text" name="percent_income" value=<?php echo $percent_income ?> /><br>
+               Age of Retirement: <input type="text" name="age_retirement" value=<?php echo $age_retirement ?> /><br>
+               Current Savings: <input type="text" name="current_savings" value=<?php echo $current_savings ?> /><br>
+               Interest Rate: <input type="text" name="interest_rate" value=<?php echo $interest_rate ?> /><br>
+               Year of Interest Change: <input type="text" name="year_interest" value=<?php echo $year_interest ?> /><br>
+               New Interest: <input type="text" name="new_interest" value=<?php echo $new_interest ?> /><br>
+               Inflation: <input type="text" name="inflation" value=<?php echo $inflation ?> /><br>
             <p><input type="submit" value="Send it!"></p>
         </form>
-        <div class="dataforchart"> <!-- VALUES -->
+        <div class="dataforchart">  VALUES 
             <input type="text" value="5">
             <input type="text" value="2">
             <input type="text" value="8">
@@ -37,7 +85,6 @@ if (isset($_POST['income'])) {
         <div id="chart1" style="height:300px;width:400px;"> <!-- CHART -->
         </div>
         <p>Top of Chart
-        <div id="chartdiv" style="height:300px;width:400px; "></div>
         <script>
             $(document).ready(function() {
                 $('.dataforchart').each(function(){
@@ -47,7 +94,6 @@ if (isset($_POST['income'])) {
                         points[index] = $(this).val();
                     });
                     var age = $('input[name=age]').val();
-                    var firstLine = 2;
                     $.jqplot('chart1',  [[[1, age],[2,15]]],{
                         title:'Exponential Line',
                         axes:{yaxis:{min:0, max:240}},
