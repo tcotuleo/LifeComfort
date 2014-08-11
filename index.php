@@ -22,12 +22,21 @@
         <p>Top of Chart
         <div id="chartdiv" style="height:300px;width:400px; "></div>
         <script>
+            $(document).ready(function() {
+            $('.dataforchart').each(function(){
+
+            var points = [];
+            $(this).children("input").each(function(index) {
+                points[index] = $(this).val();
+            });
             var age = $('input[name=age]').val();
             var firstLine = 2;
             $.jqplot('chart1',  [points],{
                 title:'Exponential Line',
                 axes:{yaxis:{min:0, max:240}},
                 series:[{color:'#5FAB78'}]
+            });
+            });
             });
         </script>
         <p>Bottom of Chart
