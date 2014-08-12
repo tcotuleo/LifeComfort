@@ -12,7 +12,7 @@ if (isset($_POST['income'])) {
 if (isset($_POST['income_change'])) {
     $income_change = $_POST['income_change'];
 } else {
-    $income_change = .10;
+    $income_change = .05;
 }
 if (isset($_POST['percent_income'])) {
     $percent_income = $_POST['percent_income'];
@@ -32,7 +32,7 @@ if (isset($_POST['current_savings'])) {
 if (isset($_POST['interest_rate'])) {
     $interest_rate = $_POST['interest_rate'];
 } else {
-    $interest_rate = 6.5;
+    $interest_rate = .065;
 }
 if (isset($_POST['year_interest'])) {
     $year_interest = $_POST['year_interest'];
@@ -42,7 +42,7 @@ if (isset($_POST['year_interest'])) {
 if (isset($_POST['new_interest'])) {
     $new_interest = $_POST['new_interest'];
 } else {
-    $new_interest = 7;
+    $new_interest = .07;
 }
 if (isset($_POST['inflation'])) {
     $inflation = $_POST['inflation'];
@@ -52,13 +52,17 @@ if (isset($_POST['inflation'])) {
 $total_by_year = [];
 $total = $current_savings;
 $income_current = $income;
+array_push($total_by_year,$total);
+
 for ($year=$age;$year<=$age_retirement;$year++){
-    $total = ($total + ($income * $percent_income)) * (1 + $interest_rate);
+    $total = ($total * (1 + $interest_rate)) + ($income * $percent_income);
+    array_push($total_by_year,$total);
     $income_current = $income_current * (1 + $income_change);
     if ($year >= $year_interest){
         $interest = $new_interest;
     }
 }
+$js_array = json_encode($total_by_year);
 ?>
 <!DOCTYPE html>
 <html>
@@ -73,7 +77,7 @@ for ($year=$age;$year<=$age_retirement;$year++){
 <script language="javascript" type="text/javascript" src="script.js"></script>
     </head>
     <body>
-        <form action="index.php" method="post">
+        <form class="chartdata" action="index.php" method="post">
             <p>Age: <input type="text" name="age" value=<?php echo $age ?> /><br>
                Income: <input type="text" name="income" value=<?php echo $income ?> /><br>
                Income Change: <input type="text" name="income_change" value=<?php echo $income_change ?> /><br>
@@ -86,35 +90,23 @@ for ($year=$age;$year<=$age_retirement;$year++){
                Inflation: <input type="text" name="inflation" value=<?php echo $inflation ?> /><br>
             <p><input type="submit" value="Send it!"></p>
         </form>
-        <div class="dataforchart">  VALUES 
-            <input type="text" value="5">
-            <input type="text" value="2">
-            <input type="text" value="8">
-            <input type="text" value="1">
-        </div>
         <div id="chart1" style="height:300px;width:400px;"> <!-- CHART -->
         </div>
         <p>Top of Chart
         <script>
             $(document).ready(function() {
-                $('.dataforchart').each(function(){
 
                     var points = [];
                     $(this).children("input").each(function(index) {
                         points[index] = $(this).val();
                     });
                     var age = $('input[name=age]').val();
-                    $.jqplot('chart1',  [[[1, age],[2,15]]],{
-                        title:'Exponential Line',
-                        axes:{yaxis:{min:0, max:240}},
-                        series:[{color:'#5FAB78'}]
-                    });
+                    $.jqplot('chart1',  [[[1,age],[2,90]]]);
 //                    $.jqplot('chart1',  [points],{
 //                        title:'Exponential Line',
 //                        axes:{yaxis:{min:0, max:240}},
 //                        series:[{color:'#5FAB78'}]
 //                    });
-                });
             });
         </script>
         <p>Bottom of Chart
