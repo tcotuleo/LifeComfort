@@ -49,6 +49,16 @@ if (isset($_POST['inflation'])) {
 } else {
     $inflation = .4;
 }
+$total_by_year = [];
+$total = $current_savings;
+$income_current = $income;
+for ($year=$age;$year<=$age_retirement;$year++){
+    $total = ($total + ($income * $percent_income)) * (1 + $interest_rate);
+    $income_current = $income_current * (1 + $income_change);
+    if ($year >= $year_interest){
+        $interest = $new_interest;
+    }
+}
 ?>
 <!DOCTYPE html>
 <html>
