@@ -73,7 +73,10 @@ print_r($js_array);
 <!--[if lt IE 9]><script language="javascript" type="text/javascript" src="excanvas.js"></script><![endif]-->
 <script language="javascript" type="text/javascript" src="dist/jquery.min.js"></script>
 <script language="javascript" type="text/javascript" src="dist/jquery.jqplot.min.js"></script>
+<script type="text/javascript" src="dist/plugins/jqplot.pointLabels.min.js"></script>
 <link rel="stylesheet" type="text/css" href="dist/jquery.jqplot.css" />
+
+<script type="text/javascript" src="dist/plugins/jqplot.pointLabels.min.js"></script>
 
 <script language="javascript" type="text/javascript" src="script.js"></script>
     </head>
@@ -97,10 +100,15 @@ print_r($js_array);
         <script>
             var points = <?php echo $js_array ?>;
             var plot1 = $.jqplot('chart1',[points],
-            { animate: true,
-              title:'Retirement Calculator',
+            
+            { title:'Retirement Calculator',
+              animate: true,
               axes:{xaxis:{min:0},yaxis:{min:0}},
-              series:[{color:'#5FAB78'}]
+              series:[{color:'#5FAB78'}],
+            seriesDefaults: { 
+              showMarker:false,
+              pointLabels: { show:true } 
+            }
             });
         </script>
         <p>Bottom of Chart
