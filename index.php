@@ -54,7 +54,7 @@ $total = $current_savings;
 $income_current = $income;
 array_push($total_by_year,$total);
 
-for ($year=$age;$year<=$age_retirement;$year++){
+for ($year=$age;$year<$age_retirement;$year++){
     $total = ($total * (1 + $interest_rate)) + ($income * $percent_income);
     array_push($total_by_year,$total);
     $income_current = $income_current * (1 + $income_change);
@@ -77,7 +77,7 @@ $js_array = json_encode($total_by_year);
 <script language="javascript" type="text/javascript" src="script.js"></script>
     </head>
     <body>
-        <form class="chartdata" action="index.php" method="post">
+        <form action="index.php" method="post">
             <p>Age: <input type="text" name="age" value=<?php echo $age ?> /><br>
                Income: <input type="text" name="income" value=<?php echo $income ?> /><br>
                Income Change: <input type="text" name="income_change" value=<?php echo $income_change ?> /><br>
@@ -94,20 +94,8 @@ $js_array = json_encode($total_by_year);
         </div>
         <p>Top of Chart
         <script>
-            $(document).ready(function() {
-
-                    var points = [];
-                    $(this).children("input").each(function(index) {
-                        points[index] = $(this).val();
-                    });
-                    var age = $('input[name=age]').val();
-                    $.jqplot('chart1',  [[[1,age],[2,90]]]);
-//                    $.jqplot('chart1',  [points],{
-//                        title:'Exponential Line',
-//                        axes:{yaxis:{min:0, max:240}},
-//                        series:[{color:'#5FAB78'}]
-//                    });
-            });
+            var points = <?php echo $js_array ?>;
+            var plot1 = $.jqplot('chart1',[points]);
         </script>
         <p>Bottom of Chart
     </body>
