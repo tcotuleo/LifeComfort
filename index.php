@@ -94,9 +94,9 @@ print_r($js_array);
                Inflation: <input type="text" name="inflation" value=<?php echo $inflation ?> /><br>
             <p><input type="submit" value="Send it!"></p>
         </form>
+        <p>Top of Chart
         <div id="chart1" style="height:450px;width:600px;"> <!-- CHART -->
         </div>
-        <p>Top of Chart
         <script>
             var points = <?php echo $js_array ?>;
             var plot1 = $.jqplot('chart1',[points],
@@ -106,7 +106,7 @@ print_r($js_array);
               axes:{xaxis:{min:0},yaxis:{min:0}},
               series:[{color:'#5FAB78'}],
             seriesDefaults: { 
-              showMarker:false,
+              showMarker:true,
               pointLabels: { show:true } 
             }
             });
