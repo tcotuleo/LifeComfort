@@ -63,6 +63,7 @@ for ($year=$age;$year<$age_retirement;$year++){
     }
 }
 $js_array = json_encode($total_by_year);
+print_r($js_array);
 ?>
 <!DOCTYPE html>
 <html>
@@ -90,15 +91,16 @@ $js_array = json_encode($total_by_year);
                Inflation: <input type="text" name="inflation" value=<?php echo $inflation ?> /><br>
             <p><input type="submit" value="Send it!"></p>
         </form>
-        <div id="chart1" style="height:300px;width:400px;"> <!-- CHART -->
+        <div id="chart1" style="height:450px;width:600px;"> <!-- CHART -->
         </div>
         <p>Top of Chart
         <script>
             var points = <?php echo $js_array ?>;
             var plot1 = $.jqplot('chart1',[points],
-            { title:'Retirement Calculator',
-            axes:{xaxis:{min:0},yaxis:{min:0}},
-            series:[{color:'#5FAB78'}]
+            { animate: true,
+              title:'Retirement Calculator',
+              axes:{xaxis:{min:0},yaxis:{min:0}},
+              series:[{color:'#5FAB78'}]
             });
         </script>
         <p>Bottom of Chart
