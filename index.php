@@ -47,7 +47,7 @@ if (isset($_POST['new_interest'])) {
 if (isset($_POST['inflation'])) {
     $inflation = $_POST['inflation'];
 } else {
-    $inflation = .4;
+    $inflation = .04;
 }
 $total_by_year = [];
 $total = $current_savings;
