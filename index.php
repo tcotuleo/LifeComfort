@@ -95,7 +95,11 @@ $js_array = json_encode($total_by_year);
         <p>Top of Chart
         <script>
             var points = <?php echo $js_array ?>;
-            var plot1 = $.jqplot('chart1',[points]);
+            var plot1 = $.jqplot('chart1',[points],
+            { title:'Retirement Calculator',
+            axes:{xaxis:{min:0},yaxis:{min:0}},
+            series:[{color:'#5FAB78'}]
+            });
         </script>
         <p>Bottom of Chart
     </body>
