@@ -1,5 +1,13 @@
 body{
-    background-color:#81F781;
+    background-color:#E6E6E6;
+}
+
+#greeting{
+    float:top;
+    border-radius: 5px;
+    border: 5px solid #31B404;
+    background-color: #31B404;
+    display:inline-block;
 }
 
 #values {
@@ -16,4 +24,5 @@ body{
 
 #message{
     clear:both;
+    text-align:center;
 }
