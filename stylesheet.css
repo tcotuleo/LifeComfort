@@ -1,4 +1,19 @@
-div {
-/*    width: 300px;*/
-    float: left
+body{
+    background-color:#81F781;
+}
+
+#values {
+    float: left;
+}
+
+#chart1 {
+    float: left;
+}
+
+#values_title{
+    text-align:center;
+}
+
+#message{
+    clear:both;
 }

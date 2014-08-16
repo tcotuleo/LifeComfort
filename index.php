@@ -55,7 +55,7 @@ $income_current = $income;
 array_push($total_by_year,$total);
 
 for ($year=$age;$year<$age_retirement;$year++){
-    $total = ($total * (1 + $interest_rate)) + ($income * $percent_income);
+    $total = round(($total * (1 + $interest_rate)) + ($income * $percent_income),2);
     array_push($total_by_year,$total);
     $income_current = $income_current * (1 + $income_change);
     if ($year >= $year_interest){
@@ -81,7 +81,8 @@ $js_array = json_encode($total_by_year);
 <script language="javascript" type="text/javascript" src="script.js"></script>
     </head>
     <body>
-        <div>
+        <div id="values">
+            <p id="values_title">Values
             <form action="index.php" method="post">
                 <p>Age: <input type="text" name="age" value=<?php echo $age ?> /><br>
                    Income: <input type="text" name="income" value=<?php echo $income ?> /><br>
@@ -98,17 +99,20 @@ $js_array = json_encode($total_by_year);
         </div>
         <div id="chart1" style="height:500px;width:800px;"> <!-- CHART -->
         </div>
+        <div id="message">
+        <?php echo "By age " . $age_retirement . " you will have $" . end($total_by_year) . "." ?>
+        </div>
         <script>
             var points = <?php echo $js_array ?>;
             var plot1 = $.jqplot('chart1',[points],
-            
             { title:'Retirement Calculator',
               animate: true,
               axes:{xaxis:{min:1},yaxis:{min:0}},
               series:[{color:'#5FAB78'}],
             seriesDefaults: { 
               showMarker:true,
-              pointLabels: { show:false } 
+              pointLabels: { show:false },
+              shadow: true,   // show shadow or not.
             }
             });
         </script>
