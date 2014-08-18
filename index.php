@@ -100,7 +100,7 @@ $js_array = json_encode($total_by_year);
                 <p><input type="submit" value="Calculate">
             </form>
         </div>
-        <div id="chart1" style="height:500px;width:800px;"> <!-- CHART -->
+        <div id="chart1" style="height:450px;width:600px;"> <!-- CHART -->
         </div>
         <div id="message">
         <?php echo "<h2>By age " . $age_retirement . " you will have $" . end($total_by_year) . ".</h2>" ?>
