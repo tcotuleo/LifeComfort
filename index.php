@@ -1,7 +1,4 @@
-
-<p align="middle"> <img src="logo.jpg" width="250" height="200" ></p>
-<title>Retirement Calculator</title>
-    <?php
+<?php
 if (isset($_POST['age'])) {
     $age = $_POST['age'];
 } else {
@@ -85,9 +82,11 @@ $js_array = json_encode($total_by_year);
 <script language="javascript" type="text/javascript" src="script.js"></script>
     </head>
     <body>
-        <h3 id="greeting"> Thank you for choosing LifeComfort. This calculator<br>
+        <p align="middle"> <img src="logo.jpg" width="250" height="200" ></p>
+        <div id="greeting">
+            <h3> Thank you for choosing LifeComfort. This calculator<br>
             can be used to make a comfortable retirement plan.</h3><br>
-       
+        </div>
         <div id="values">
             <p id="values_title">Values
             <form action="index.php" method="post">
