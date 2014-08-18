@@ -83,9 +83,7 @@ $js_array = json_encode($total_by_year);
     </head>
     <body>
         <p align="middle"> <img src="logo.jpg" width="250" height="200" ></p>
-       <div id="greeting">
-            <h3> Thank you for choosing LifeComfort. This calculator can be used to make a comfortable retirement plan.</h3><br>
-       </div>
+            <h3 id = "greeting"> Thank you for choosing LifeComfort. This calculator can be used to make a comfortable retirement plan.</h3><br>
         
         <div id="values">
             <table border="1"><p id="values_title">Values
