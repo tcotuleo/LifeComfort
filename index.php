@@ -83,14 +83,14 @@ $js_array = json_encode($total_by_year);
     </head>
     <body>
         <p align="middle"> <img src="logo.jpg" width="250" height="200" ></p>
-        <div id="greeting">
-            <h3> Thank you for choosing LifeComfort. This calculator<br>
-            can be used to make a comfortable retirement plan.</h3><br>
-        </div>
+       <div id="greeting">
+            <h3> Thank you for choosing LifeComfort. This calculator can be used to make a comfortable retirement plan.</h3><br>
+       </div>
+        
         <div id="values">
-            <p id="values_title">Values
+            <table border="1"><p id="values_title">Values
             <form action="index.php" method="post">
-                <table>
+                
                     <p>
                     <tr> <td>Age: </td> <td> <input type="text" name="age" value=<?php echo $age ?> /><br> </td></tr>
                     <tr> <td>Income: </td> <td><input type="text" name="income" value=<?php echo $income ?> /><br> </td></tr>
