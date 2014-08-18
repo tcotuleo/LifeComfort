@@ -86,6 +86,8 @@ $js_array = json_encode($total_by_year);
             <h3 id = "greeting"> Thank you for choosing LifeComfort. This calculator can be used to make a comfortable retirement plan.</h3><br>
         
         <div id="values">
+            <table> 
+                <tr> <td>
             <table border="1"><p id="values_title">Values
             <form action="index.php" method="post">
                 
@@ -102,11 +104,13 @@ $js_array = json_encode($total_by_year);
                     <tr> <td>Inflation %: </td> <td><input type="text" name="inflation" value=<?php echo $inflation ?> /><br></td></tr>
                 <p>
                 </table>
-                <input type="submit" value="Calculate">
+                        <input id='button' type="submit" value="Calculate"> </td> </tr>
+            
             </form>
         </div>
         <div id="chart1" style="height:450px;width:600px;"> <!-- CHART -->
         </div>
+            </table>
         <div id="message">
         <?php echo "<h2>By age " . $age_retirement . " you will have $" . end($total_by_year) . ".</h2>" ?>
         </div>
