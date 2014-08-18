@@ -1,4 +1,7 @@
-<?php
+
+<p align="middle"> <img src="logo.jpg" width="250" height="200" ></p>
+<title>Retirement Calculator</title>
+    <?php
 if (isset($_POST['age'])) {
     $age = $_POST['age'];
 } else {
@@ -84,20 +87,25 @@ $js_array = json_encode($total_by_year);
     <body>
         <h3 id="greeting"> Thank you for choosing LifeComfort. This calculator<br>
             can be used to make a comfortable retirement plan.</h3><br>
+       
         <div id="values">
             <p id="values_title">Values
             <form action="index.php" method="post">
-                <p>Age: <input type="text" name="age" value=<?php echo $age ?> /><br>
-                   Income: <input type="text" name="income" value=<?php echo $income ?> /><br>
-                   Income Change %: <input type="text" name="income_change" value=<?php echo $income_change ?> /><br>
-                   Income Contribution %: <input type="text" name="income_contribute" value=<?php echo $income_contribute ?> /><br>
-                   Age of Retirement: <input type="text" name="age_retirement" value=<?php echo $age_retirement ?> /><br>
-                   Current Savings: <input type="text" name="current_savings" value=<?php echo $current_savings ?> /><br>
-                   Interest Rate %: <input type="text" name="interest_rate" value=<?php echo $interest_rate ?> /><br>
-                   Year of Interest Change: <input type="text" name="year_interest" value=<?php echo $year_interest ?> /><br>
-                   New Interest %: <input type="text" name="new_interest" value=<?php echo $new_interest ?> /><br>
-                   Inflation %: <input type="text" name="inflation" value=<?php echo $inflation ?> /><br>
-                <p><input type="submit" value="Calculate">
+                <table>
+                    <p>
+                    <tr> <td>Age: </td> <td> <input type="text" name="age" value=<?php echo $age ?> /><br> </td></tr>
+                    <tr> <td>Income: </td> <td><input type="text" name="income" value=<?php echo $income ?> /><br> </td></tr>
+                    <tr> <td>Income Change %: </td> <td><input type="text" name="income_change" value=<?php echo $income_change ?> /><br> </td></tr>
+                    <tr> <td>Income Contribution %: </td> <td><input type="text" name="income_contribute" value=<?php echo $income_contribute ?> /><br> </td></tr>
+                    <tr> <td>Age of Retirement: </td> <td><input type="text" name="age_retirement" value=<?php echo $age_retirement ?> /><br> </td></tr>
+                    <tr> <td>Current Savings: </td> <td><input type="text" name="current_savings" value=<?php echo $current_savings ?> /><br> </td></tr>
+                    <tr> <td>Interest Rate %: </td> <td><input type="text" name="interest_rate" value=<?php echo $interest_rate ?> /><br> </td></tr>
+                    <tr> <td>Year of Interest Change: </td> <td><input type="text" name="year_interest" value=<?php echo $year_interest ?> /><br> </td></tr>
+                    <tr> <td>New Interest %: </td> <td><input type="text" name="new_interest" value=<?php echo $new_interest ?> /><br> </td></tr>
+                    <tr> <td>Inflation %: </td> <td><input type="text" name="inflation" value=<?php echo $inflation ?> /><br></td></tr>
+                <p>
+                </table>
+                <input type="submit" value="Calculate">
             </form>
         </div>
         <div id="chart1" style="height:450px;width:600px;"> <!-- CHART -->
