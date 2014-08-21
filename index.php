@@ -51,19 +51,26 @@ if (isset($_POST['inflation'])) {
 }
 
 $total_by_year = [];
+$inflation_by_year = [];
 $total = $current_savings;
+$inflation_total = $current_savings;
 $income_current = $income;
 array_push($total_by_year,$total);
+array_push($inflation_by_year,$inflation_total);
 
 for ($year=$age;$year<$age_retirement;$year++){
-    $total = round(($total * (1 + ($interest_rate/100))) + ($income * ($income_contribute/100)),2);
-    array_push($total_by_year,$total);
-    $income_current = $income_current * (1 + ($income_change/100));
-    if ($year >= $year_interest){
-        $interest = ($new_interest/100);
+    if (($year - $age) >= $year_interest){
+        $interest_rate = ($new_interest);
     }
+    $total = round(($total * (1 + ($interest_rate/100))) + ($income * ($income_contribute/100)),2);
+    $inflation_total = round(($inflation_total * (1 + ($interest_rate/100))) + ($income * ($income_contribute/100)),2);
+    $inflation_total = round($inflation_total*(1-($inflation/100)),2);
+    array_push($total_by_year,$total);
+    array_push($inflation_by_year,$inflation_total);
+    $income_current = $income_current * (1 + ($income_change/100));
 }
-$js_array = json_encode($total_by_year);
+$total_array = json_encode($total_by_year);
+$inflation_array = json_encode($inflation_by_year);
 ?>
 <!DOCTYPE html>
 <html>
@@ -112,11 +119,13 @@ $js_array = json_encode($total_by_year);
         </div>
             </table>
         <div id="message">
-        <?php echo "<h2>By age " . $age_retirement . " you will have $" . end($total_by_year) . ".</h2>" ?>
+        <?php echo "<h2>By age " . $age_retirement . " you will have $" . end($total_by_year) . ".</h2>";
+              echo "<p><h2>That is $" . end($inflation_by_year) . " when adjusted for " . $inflation . "% inflation."?>
         </div>
         <script>
-            var points = <?php echo $js_array ?>;
-            var plot1 = $.jqplot('chart1',[points],
+            var total = <?php echo $total_array ?>;
+            var inflation = <?php echo $inflation_array ?>;
+            var plot1 = $.jqplot('chart1',[total,inflation],
             { title:'Retirement Calculator',
               animate: true,
               axes:{xaxis:{min:1},yaxis:{min:0}},
