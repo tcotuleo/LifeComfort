@@ -71,26 +71,9 @@ for ($year=$age;$year<$age_retirement;$year++){
 }
 $total_array = json_encode($total_by_year);
 $inflation_array = json_encode($inflation_by_year);
+
+include "/view/header.php";
 ?>
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="UTF-8">
-        <title>Retirement Calculator</title>
-        <link type="text/css" rel="stylesheet" href="stylesheet.css"/>
-<!--[if lt IE 9]><script language="javascript" type="text/javascript" src="excanvas.js"></script><![endif]-->
-<script language="javascript" type="text/javascript" src="dist/jquery.min.js"></script>
-<script language="javascript" type="text/javascript" src="dist/jquery.jqplot.min.js"></script>
-<script type="text/javascript" src="dist/plugins/jqplot.pointLabels.min.js"></script>
-<link rel="stylesheet" type="text/css" href="dist/jquery.jqplot.css" />
-
-<script type="text/javascript" src="dist/plugins/jqplot.pointLabels.min.js"></script>
-
-<script language="javascript" type="text/javascript" src="script.js"></script>
-    </head>
-    <body>
-        <p align="middle"> <img src="logo.jpg" width="250" height="200" ></p>
-            <h3 id = "greeting"> Thank you for choosing LifeComfort. This calculator can be used to make a comfortable retirement plan.</h3><br>
         
         <div id="values">
             <table> 
@@ -137,5 +120,7 @@ $inflation_array = json_encode($inflation_by_year);
             }
             });
         </script>
-    </body>
-</html>
+        
+<?php
+include "view/footer.php";
+?>
