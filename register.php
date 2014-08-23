@@ -10,55 +10,32 @@ Email: <input type='text' name='email' size='30'><br>
 require('connect.php');
 
 //This function will display the registration form
-
-
 //This function will register users data
-
 function register(){
 
-
 //Connecting to database
-
 $connect = mysql_connect('127.0.0.1', 'root', '');
-
 if(!$connect){
-
 die(mysql_error());
-
 }
-
 
 //Selecting database
-
 $select_db = mysql_select_db("lifecomfortusers", $connect);
-
 if(!$select_db){
-
 die(mysql_error());
-
 }
 
-
 //Collecting info
-
 $name = $_REQUEST['name'];
-
 $username = $_REQUEST['username'];
-
 $password = $_REQUEST['password'];
-
 $pass_conf = $_REQUEST['password_conf'];
-
 $email = $_REQUEST['email'];
-
 $date = $_REQUEST['date'];
-
 
 //Here we will check do we have all inputs filled
 if(empty($name)){
-
 die("Please enter your username!<br>");
-
 }
 
 if(empty($username)){
