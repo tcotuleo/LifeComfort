@@ -1,8 +1,7 @@
 <?php
+session_start();
 include "view/header.php";
 
-//This will start a session
-session_start();
 require('connect.php');
 
 if (isset($_SESSION['username']) && isset($_SESSION['password'])){

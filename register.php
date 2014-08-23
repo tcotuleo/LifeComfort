@@ -1,4 +1,4 @@
-<form action='register' method='post'> 
+<form action='register.php' method='post'> 
 Name: <input type='text' name='name' size='30'><br>
 Username: <input type='text' name='username' size='30'><br>
 Password: <input type='password' name='password' size='30'><br>
@@ -11,7 +11,6 @@ require('connect.php');
 
 //This function will display the registration form
 //This function will register users data
-function register(){
 
 //Connecting to database
 $connect = mysql_connect('127.0.0.1', 'root', '');
@@ -125,16 +124,10 @@ die("There's little problem: ".mysql_error());
 echo $name.", you are now registered. Thank you!<br><a href=login.php>Login</a> | <a href=index.php>Index</a>";
 echo $username.", is your username.";
 
-}
 
 
-if (!isset($_POST))
-        register_form();
-    else {
-    register();
 
 
-}
 
 
 ?> 
