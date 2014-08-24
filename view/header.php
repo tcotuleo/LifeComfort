@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>Retirement Calculator</title>
+        <title><?php echo $page_title ?></title>
         <link type="text/css" rel="stylesheet" href="stylesheet.css"/>
         <!--[if lt IE 9]><script language="javascript" type="text/javascript" src="excanvas.js"></script><![endif]-->
         <script language="javascript" type="text/javascript" src="dist/jquery.min.js"></script>
