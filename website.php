@@ -81,7 +81,7 @@ include "view/header.php";
             <table> 
                 <tr> <td>
             <table border="1"><p id="values_title">Values
-            <form action="index1.php" method="post">
+                <form action="website.php" method="post">
                 
                     <p>
                     <tr> <td>Age: </td> <td> <input type="text" name="age" value=<?php echo $age ?> /><br> </td></tr>

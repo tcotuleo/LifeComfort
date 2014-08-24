@@ -1,19 +1,26 @@
-<!DOCTYPE html>
+<?php
 
-<html>
-    <head>
-        <title></title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    </head>
-    <body>
-        <a href="login.php">Login</a>
-        <br />
-        <a href="logout.php">Logout</a>
-        <br />
-        <a href="register.php">Register</a>
-        <br />
-        <a href="forgotpass.php">Forgot Password</a>
-        <br />
-    </body>
-</html>
+//This will start a session
+
+session_start();
+
+include "view/header.php";
+
+$username = $_SESSION['username'];
+
+$password = $_SESSION['password'];
+
+
+//Check do we have username and password
+
+if(!$username && !$password){
+
+echo "Welcome Guest! <br> <a href=login.php>Login</a> | <a href=register.php>Register</a>";
+
+}else{
+
+echo "Welcome ".$username." (<a href=logout.php>Logout</a>)";
+include 'index1.php';
+}
+include "view/footer.php";
+?>
