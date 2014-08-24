@@ -33,16 +33,33 @@ if($username && $password){
             echo "You are already logged in as <b>$dbusername</b>. please continue on our <a href=index.php>Index</a>";
 }
 else{
+    $form = "<form action='?act=login' method='post'> "
+                . "<table> "
+                . "<tr> "
+                . "<td> Username: </td> "
+                . "<td> <input type='text' name='username' size='30' /> </td> "
+                . "</tr>"
+                . "<tr> "
+                . "<td> Password: </td> "
+                . "<td> <input type='password' name='password' size='30' /> </td> "
+                . "</tr>"
+                . "<tr> "
+                . "<td></td> "
+                . "<td> <input type='submit' name='loginbutton' value='Login' /> </td> "
+                . "</tr> "
+                . "</table> "
+                . "</form>";
 
-    $form = "<form action='?act=login' method='post'>"
 
-    ."Username: <input type='text' name='username' size='30'><br>"
+    //$form = "<form action='?act=login' method='post'>"
 
-    ."Password: <input type='password' name='password' size='30'><br>"
+    //."Username: <input type='text' name='username' size='30'><br>"
 
-    ."<input type='submit' name='loginbutton' value='Login'>"
+    //."Password: <input type='password' name='password' size='30'><br>"
 
-    ."</form>";
+    //."<input type='submit' name='loginbutton' value='Login'>"
+
+    //."</form>";
 
 
 //}
