@@ -1,133 +1,151 @@
-<form action='register.php' method='post'> 
-Name: <input type='text' name='name' size='30'><br>
-Username: <input type='text' name='username' size='30'><br>
-Password: <input type='password' name='password' size='30'><br>
-Confirm your password: <input type='password' name='password_conf' size='30'><br> 
-Email: <input type='text' name='email' size='30'><br> 
-<input type='submit' name="register" value='Register'>
-</form>
 <?php
-require('connect.php');
-
-//This function will display the registration form
-//This function will register users data
-
-//Connecting to database
-$connect = mysql_connect('127.0.0.1', 'root', '');
-if(!$connect){
-die(mysql_error());
-}
-
-//Selecting database
-$select_db = mysql_select_db("lifecomfortusers", $connect);
-if(!$select_db){
-die(mysql_error());
-}
-
-//Collecting info
-$name = $_REQUEST['name'];
-$username = $_REQUEST['username'];
-$password = $_REQUEST['password'];
-$pass_conf = $_REQUEST['password_conf'];
-$email = $_REQUEST['email'];
-$date = $_REQUEST['date'];
-
-//Here we will check do we have all inputs filled
-if(empty($name)){
-die("Please enter your username!<br>");
-}
-
-if(empty($username)){
-
-die("Please enter your username!<br>");
-
-}
+error_reporting(E_ALL ^ E_NOTICE);
+?>
 
 
-if(empty($password)){
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <div></div>
+        <?php
+        if ($_POST['registerbtn']){
+            $getuser = $_POST['user'];
+            $getemail = $_POST['email'];
+            $getpass = $_POST['pass'];
+            $getretypepass = $_POST['retypepass'];
+            
+            if ($getuser){
+                if ($getemail){
+                    if ($getpass){
+                        if ($getretypepass){
+                            if ($getpass === $getretypepass){
+                                if ( (strlen($getemail) >= 7) && (strstr ($getemail,"@")) && (strstr ($getemail,"."))){
+                                    require("connect.php");
+                                    
+                                    $query = mysql_query("SELECT * FROM users WHERE username='$getuser'");
+                                    $numrows = mysql_num_rows($query);
+                                    if ($numrows == 0){
+                                        $query = mysql_query("SELECT * FROM users WHERE username='$getemail'");
+                                        $numrows = mysql_num_rows($query);
+                                        if ($numrows == 0){
+                                            
+                                            $password = md5(md5("kjfiufj".$password."Fj56fj"));
+                                            date_default_timezone_set('UTC');
+                                            $date = date("F d, Y");
+                                            $code = md5(rand());
+                                            
+                                            mysql_query("INSERT INTO users VALUES ('', '$getuser', '$password', '$getemail', '0', '$code', '$date')");
+                                            
+                                            $query = mysql_query("SELECT * FROM users WHERE username='$getuser'");
+                                            $numrows = mysql_num_rows($query);
+                                            if ($numrows == 1){
+                                                
+                                                $site = "http://localhost:8000";
+                                                $webmaster = "admin@lifecomfort.com";
+                                                $headers = "From: $webmaster";
+                                                $subject = "Activate your account";
+                                                $message = "Thanks for registering. Click the link below to activte your account.\n";
+                                                $message .= "$site/activate.php?user=$getuser&code=$code\n";
+                                                $message .= "You must activate your account to login";
+                                                
+                                                if (mail($getemail, $subject, $message, $headers)){
+                                                    $errormsg = "You have been registered. You must activate your account from the activation link sent to <b>$getemail</b>.";
+                                                    $getuser = "";
+                                                    $getemail = "";
+                                                    
+                                                }
+                                                
+                                                else{
+                                                    $errormsg = "An error has occured. Your activation email was not sent.";
+                                                }
+                                                
+                                                
+                                            }else{
+                                                $errormsg = "An error has occured. Your account was not created.";
+                                            }
+                                        
+                                        }
+                                        else{
+                                        $errormsg = "The user already exists with the same username";
+                                        }
+                                        
+                                    }
+                                    else{
+                                        $errormsg = "The user already exists with the same email";
+                                    }
+                                    
+                                    mysql_close();
+                                }
+                                else{
+                                    $errormsg = "You must enter a valid email address to register";
+                                }
+                            }
+                            else{
+                                $errormsg = "Your password did not match.";
+                            }
+                        }
+                        else{
+                            $errormsg = "You must retype your password to register.";
+                            }
+                    }
+                    else{
+                    $errormsg = "You must enter your password to register.";
+                    }
+                }
+                else{
+                    $errormsg = "You must enter your email to register.";
+                }
+            }
+            else{
+                $errormsg = "You must enter your username to register.";
+            }
+        }
 
-die("Please enter your password!<br>");
+          
+        $form = "<form action='register.php' method='post'> "
+                . "<table> "
+                . "<tr> "
+                . "<td></td> "
+                . "<td><font color='red'>$errormsg</font></td> "
+                . "</tr>"
+                . "<tr> "
+                . "<td> Username: </td> "
+                . "<td> <input type='text' name='user' value='$getuser' /> </td> "
+                . "</tr>"
+                . "<tr> "
+                . "<td> Email: </td> "
+                . "<td> <input type='text' name='email' value='$getemail' /> </td> "
+                . "</tr>"
+                . "<tr> "
+                . "<td> Password: </td> "
+                . "<td> <input type='password' name='pass' value='' /> </td> "
+                . "</tr>"
+                . "<tr> "
+                . "<td> Retype: </td> "
+                . "<td> <input type='password' name='retypepass' value='' /> </td> "
+                . "</tr>"
+                . "<tr> "
+                . "<td></td> "
+                . "<td> <input type='submit' name='registerbtn' value='Register' /> </td> "
+                . "</tr> "
+                . "</table> "
+                . "</form>";
+        
+        echo $form;
+        
+            
+        ?>
+        
+    </body>
+</html>
 
-}
-
-
-if(empty($pass_conf)){
-
-die("Please confirm your password!<br>");
-
-}
-
-
-if(empty($email)){
-
-die("Please enter your email!");
-
-}
-
-
-//Let's check if this username is already in use
-
-
-$user_check = mysql_query("SELECT username FROM users WHERE username='$username'");
-
-$do_user_check = mysql_num_rows($user_check);
-
-
-//Now if email is already in use
-
-
-$email_check = mysql_query("SELECT email FROM users WHERE email='$email'");
-
-$do_email_check = mysql_num_rows($email_check);
-
-
-//Now display errors
-
-
-if($do_user_check > 0){
-
-die("Username is already in use!<br>");
-
-}
-
-
-if($do_email_check > 0){
-
-die("Email is already in use!");
-
-}
-
-
-//Now let's check does passwords match
-
-
-if($password != $pass_conf){
-
-die("Passwords don't match!");
-
-}
-
-
-
-//If everything is okay let's register this user
-
-
-$insert = mysql_query("INSERT INTO users (name, username, password, email) VALUES ('$name', '$username', '$password', '$email')");
-
-if(!$insert){
-
-die("There's little problem: ".mysql_error());
-
-}
-
-
-echo $name.", you are now registered. Thank you!<br><a href=login.php>Login</a> | <a href=index.php>Index</a>";
-echo $username.", is your username.";
-
-
-
-
-
-
-
-?> 

@@ -4,7 +4,6 @@ session_start();
 $userid = $_SESSION['userid'];
 $username = $_SESSION['username'];
 ?>
-
 <!DOCTYPE html>
 <!--
 To change this license header, choose License Headers in Project Properties.
@@ -13,21 +12,24 @@ and open the template in the editor.
 -->
 <html>
     <head>
-        <title></title>
+        <title>Login System</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     <body>
         <div></div>
         <?php
+        
         if ($username && $userid){
-            session_destroy();
-            echo "You have been logged out. <a href='member.php'>Member</a>";
+            echo "Welcome <b>$username</b>, <a href='logout.php'>Logout</a>";
+            echo "<br /> <a href='resetpass.php'>Reset your password</a>";
         }
         else{
-            echo "You are not logged in.";
+            echo "Please login to access this page. <a href='login.php'>Login </a>";
         }
         ?>
+        
     </body>
 </html>
+
 
