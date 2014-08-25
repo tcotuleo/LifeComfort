@@ -1,5 +1,5 @@
 <?php
-
+include "index.php";
 
 if (isset($_POST['age'])) {
     $age = $_POST['age'];
@@ -74,7 +74,7 @@ for ($year=$age;$year<$age_retirement;$year++){
 $total_array = json_encode($total_by_year);
 $inflation_array = json_encode($inflation_by_year);
 
-include "view/header.php";
+//include "view/header.php";
 ?>
         
         <div id="values">
@@ -124,5 +124,5 @@ include "view/header.php";
         </script>
         
 <?php
-include "view/footer.php";
+//include "view/footer.php";
 ?>

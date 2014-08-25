@@ -138,7 +138,7 @@ $_SESSION["password"] = $password;
 //session_register("password", $password);
 
 
-echo "Welcome, ".$username." please continue on our <a href=index.php>Index</a>";
+echo "Welcome, ".$username." please continue on our <a href=website.php>Main Page</a>";
         }
         else{
          echo "You must enter your password. $form";

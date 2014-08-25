@@ -4,7 +4,7 @@
 
 session_start();
 
-include "view/header.php";
+include_once "view/header.php";
 
 $username = $_SESSION['username'];
 
@@ -20,7 +20,6 @@ echo "Welcome Guest! <br> <a href=login.php>Login</a> | <a href=register.php>Reg
 }else{
 
 echo "Welcome ".$username." (<a href=logout.php>Logout</a>)";
-include 'index1.php';
 }
-include "view/footer.php";
+include_once "view/footer.php";
 ?>
