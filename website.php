@@ -1,5 +1,24 @@
 <?php
-include "index.php";
+session_start();
+$page_title = "Login/Register";
+include_once "view/header.php";
+
+$username = $_SESSION['username'];
+
+$password = $_SESSION['password'];
+
+
+//Check do we have username and password
+
+if(!$username && !$password){
+
+echo "Welcome Guest! <br> <a href=login.php>Login</a> | <a href=register.php>Register</a>";
+
+}else{
+
+echo "Welcome ".$username." (<a href=logout.php>Logout</a>)";
+}
+
 
 if (isset($_POST['age'])) {
     $age = $_POST['age'];
@@ -124,5 +143,5 @@ $inflation_array = json_encode($inflation_by_year);
         </script>
         
 <?php
-//include "view/footer.php";
+include "view/footer.php";
 ?>

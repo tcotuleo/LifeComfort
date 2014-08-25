@@ -19,7 +19,7 @@ echo "Welcome Guest! <br> <a href=login.php>Login</a> | <a href=register.php>Reg
 
 }else{
 
-echo "Welcome ".$username." (<a href=logout.php>Logout</a>)";
+echo "Welcome ".$username." (<a href=logout.php>Logout</a>) please continue on our <a href=website.php>Main Page</a>";
 }
 include_once "view/footer.php";
 ?>
