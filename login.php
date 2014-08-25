@@ -3,8 +3,10 @@
 session_start();
 include "view/header.php";
 
-$_SESSION["username"] = $username;
-$_SESSION["password"] = $password;
+if (isset($username) && isset($password)) {
+    $_SESSION["username"] = $username;
+    $_SESSION["password"] = $password;
+}
 //Connecting to database
 
 $connect = mysql_connect('127.0.0.1', 'root', '');
@@ -29,7 +31,7 @@ die(mysql_error());
 //This displays your login form
 
 //function index(){
-if($username && $password){
+if(isset($username) && isset($password)){
             echo "You are already logged in as <b>$dbusername</b>. please continue on our <a href=index.php>Index</a>";
 }
 else{
@@ -67,7 +69,7 @@ else{
 
 //This function will find and checks if your data is correct
 
-    if ($_POST['loginbutton']){
+    if (isset($_POST['loginbutton'])){
 
 
     //Collect your info from login form

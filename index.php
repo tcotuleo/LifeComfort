@@ -3,7 +3,7 @@
 //This will start a session
 
 session_start();
-
+$page_title = "Login/Register";
 include_once "view/header.php";
 
 $username = $_SESSION['username'];
