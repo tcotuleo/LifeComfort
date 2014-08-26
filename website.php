@@ -13,10 +13,10 @@ $password = $_SESSION['password'];
 if(!$username && !$password){
 
 echo "Welcome Guest! <br> <a href=login.php>Login</a> | <a href=register.php>Register</a>";
-
+exit();
 }else{
 
-echo "Welcome ".$username." (<a href=logout.php>Logout</a>)";
+echo "Welcome, <font color='red'>".$username."</font> <a href=logout.php><button type='button'>Logout</button></a>";
 }
 
 

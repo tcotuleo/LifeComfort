@@ -7,26 +7,7 @@ if (isset($username) && isset($password)) {
     $_SESSION["username"] = $username;
     $_SESSION["password"] = $password;
 }
-//Connecting to database
-
-$connect = mysql_connect('127.0.0.1', 'root', '');
-
-if(!$connect){
-
-die(mysql_error());
-
-}
-
-
-//Selecting database
-
-$select_db = mysql_select_db("test", $connect);
-
-if(!$select_db){
-
-die(mysql_error());
-
-}
+require 'connect.php';
 
 //This displays your login form
 
@@ -36,20 +17,19 @@ if(isset($username) && isset($password)){
 }
 else{
     $form = "<form action='?act=login' method='post'> "
-                . "<table> "
+                ."<div style='text-align: center' "
+                . "<table border='1' > "
                 . "<tr> "
                 . "<td> Username: </td> "
                 . "<td> <input type='text' name='username' size='30' /> </td> "
-                . "</tr>"
+                . "</tr> <br />"
                 . "<tr> "
                 . "<td> Password: </td> "
                 . "<td> <input type='password' name='password' size='30' /> </td> "
-                . "</tr>"
-                . "<tr> "
-                . "<td></td> "
-                . "<td> <input type='submit' name='loginbutton' value='Login' /> </td> "
-                . "</tr> "
+                . "</tr> <br />"
                 . "</table> "
+                . "<input type='submit' name='loginbutton' value='Login' />"
+                ."</div>"
                 . "</form>";
 
 
@@ -84,7 +64,7 @@ else{
         //Find if entered data is correct
 
                 
-$result = mysql_query("SELECT * FROM users WHERE username='$username' AND password='$password'");
+$result = mysql_query("SELECT * FROM users WHERE username='$username'");
 
 $row = mysql_fetch_array($result);
 
@@ -100,7 +80,8 @@ $user = $row2['username'];
 
 if($username != $user){
 
-die("Username is wrong!");
+echo "Username is wrong! . $form";
+exit();
 
 
 
@@ -123,7 +104,8 @@ $real_password = $row4['password'];
 
 if($password != $real_password){
 
-die("Your password is wrong!");
+echo "You must enter correct password!. $form";
+exit();
 
 }
 
@@ -140,7 +122,7 @@ $_SESSION["password"] = $password;
 //session_register("password", $password);
 
 
-echo "Welcome, ".$username." please continue on our <a href=website.php>Main Page</a>";
+                include 'website.php';
         }
         else{
          echo "You must enter your password. $form";

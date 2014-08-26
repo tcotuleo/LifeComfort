@@ -3,7 +3,7 @@ include "view/header.php";
 
 
 $form = "<form action='register.php' method='post'> "
-                . "<table> "
+                . "<table algin='center'> "
                 . "<tr> "
                 . "<td> Username: </td> "
                 . "<td> <input type='text' name='user' value='$getuser' /> </td> "

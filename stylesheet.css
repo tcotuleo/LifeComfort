@@ -63,7 +63,7 @@ body{
    background: #1b435e;
    }
    
-   .register-form{
+.register-form{
 	width: 500px;
 	margin: 0 auto;
 	text-align: center;
@@ -89,3 +89,8 @@ border: 0;
 width: 60px;
 padding: 8px;
 }
+
+.automargin{ 
+    margin:auto;
+    position:absolute;
+ }
