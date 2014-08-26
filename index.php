@@ -11,14 +11,14 @@ session_start();
 $page_title = "Login/Register";
 include_once "view/header.php";
 
-$username = $_SESSION['username'];
-
-$password = $_SESSION['password'];
-
+if (isset($_SESSION['username']) && isset($_SESSION['password'])){
+    $username = $_SESSION['username'];
+    $password = $_SESSION['password'];
+}
 
 //Check do we have username and password
 
-if(!$username && !$password){
+if(!isset($username) && !isset($password)){
 
 echo "Welcome Guest! <br> <a href=login.php><button type='button'>Login</button></a> | <a href=register.php><button type='button'>Register</button></a>";
 

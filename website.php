@@ -1,5 +1,7 @@
 <?php
-session_start();
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
 $page_title = "Login/Register";
 include_once "view/header.php";
 
@@ -19,76 +21,118 @@ exit();
 echo "Welcome, <font color='red'>".$username."</font> <a href=logout.php><button type='button'>Logout</button></a>";
 }
 
-
+$non_number = FALSE;
 if (isset($_POST['age'])) {
     $age = $_POST['age'];
+    if(!is_numeric($age)){
+        echo "<p class=\"error_message\">Age must be a number";
+        $non_number = TRUE;
+    }
 } else {
     $age = 30;
 }
 if (isset($_POST['income'])) {
     $income = $_POST['income'];
+    if(!is_numeric($income)){
+        echo "<p class=\"error_message\">Income must be a number";
+        $non_number = TRUE;
+    }
 } else {
     $income = 60000;
 }
 if (isset($_POST['income_change'])) {
     $income_change = $_POST['income_change'];
+    if(!is_numeric($income_change)){
+        echo "<p class=\"error_message\">Income change must be a number";
+        $non_number = TRUE;
+    }
 } else {
     $income_change = 50;
 }
 if (isset($_POST['income_contribute'])) {
     $income_contribute = $_POST['income_contribute'];
+    if(!is_numeric($income_contribute)){
+        echo "<p class=\"error_message\">Income contribution must be a number";
+        $non_number = TRUE;
+    }
 } else {
     $income_contribute = 10;
 }
 if (isset($_POST['age_retirement'])) {
     $age_retirement = $_POST['age_retirement'];
+    if(!is_numeric($age_retirement)){
+        echo "<p class=\"error_message\">Age of retirement must be a number";
+        $non_number = TRUE;
+    }
 } else {
     $age_retirement = 65;
 }
 if (isset($_POST['current_savings'])) {
     $current_savings = $_POST['current_savings'];
+    if(!is_numeric($current_savings)){
+        echo "<p class=\"error_message\">Current savings must be a number";
+        $non_number = TRUE;
+    }
 } else {
     $current_savings = 40000;
 }
 if (isset($_POST['interest_rate'])) {
     $interest_rate = $_POST['interest_rate'];
+    if(!is_numeric($interest_rate)){
+        echo "<p class=\"error_message\">Interest rate must be a number";
+        $non_number = TRUE;
+    }
 } else {
     $interest_rate = 6.5;
 }
 if (isset($_POST['year_interest'])) {
     $year_interest = $_POST['year_interest'];
+    if(!is_numeric($year_interest)){
+        echo "<p class=\"error_message\">Year of interest change must be a number";
+        $non_number = TRUE;
+    }
 } else {
     $year_interest = 15;
 }
 if (isset($_POST['new_interest'])) {
     $new_interest = $_POST['new_interest'];
+    if(!is_numeric($new_interest)){
+        echo "<p class=\"error_message\">New interest must be a number";
+        $non_number = TRUE;
+    }
 } else {
     $new_interest = 7;
 }
 if (isset($_POST['inflation'])) {
     $inflation = $_POST['inflation'];
+    if(!is_numeric($inflation)){
+        echo "<p class=\"error_message\">Inflation must be a number";
+        $non_number = TRUE;
+    }
 } else {
     $inflation = 4;
 }
 
 $total_by_year = [];
 $inflation_by_year = [];
-$total = $current_savings;
-$inflation_total = $current_savings;
-$income_current = $income;
-array_push($total_by_year,$total);
-array_push($inflation_by_year,$inflation_total);
 
-for ($year=$age;$year<$age_retirement;$year++){
-    if (($year - $age) >= $year_interest){
-        $interest_rate = ($new_interest);
-    }
-    $total = round(($total * (1 + ($interest_rate/100))) + ($income * ($income_contribute/100)),2);
-    $inflation_total = round(($inflation_total * (1 + ($interest_rate/100))) + ($income * ($income_contribute/100)),2);
-    $inflation_total = round($inflation_total*(1-($inflation/100)),2);
+if (!$non_number) {
+    $total = $current_savings;
+    $inflation_total = $current_savings;
+    $income_current = $income;
     array_push($total_by_year,$total);
     array_push($inflation_by_year,$inflation_total);
-    $income_current = $income_current * (1 + ($income_change/100));
+
+    for ($year=$age;$year<$age_retirement;$year++){
+        if (($year - $age) >= $year_interest){
+            $interest_rate = ($new_interest);
+        }
+        $total = round(($total * (1 + ($interest_rate/100))) + ($income * ($income_contribute/100)),2);
+        $inflation_total = round((($inflation_total * (1 + ($interest_rate/100))) + ($income * ($income_contribute/100)))*(1-($inflation/100)),2);
+        array_push($total_by_year,$total);
+        array_push($inflation_by_year,$inflation_total);
+        $income_current = $income_current * (1 + ($income_change/100));
+    }
 }
 $total_array = json_encode($total_by_year);
 $inflation_array = json_encode($inflation_by_year);
