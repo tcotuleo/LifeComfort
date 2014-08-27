@@ -122,13 +122,13 @@ if (!$non_number) {
     $income_current = $income;
     array_push($total_by_year,$total);
     array_push($inflation_by_year,$inflation_total);
-
+    $interest_rate_effective = $interest_rate;
     for ($year=$age;$year<$age_retirement;$year++){
         if (($year - $age) >= $year_interest){
-            $interest_rate = ($new_interest);
+            $interest_rate_effective = $new_interest;
         }
-        $total = round(($total * (1 + ($interest_rate/100))) + ($income * ($income_contribute/100)),2);
-        $inflation_total = round((($inflation_total * (1 + ($interest_rate/100))) + ($income * ($income_contribute/100)))*(1-($inflation/100)),2);
+        $total = round(($total * (1 + ($interest_rate_effective/100))) + ($income * ($income_contribute/100)),2);
+        $inflation_total = round((($inflation_total * (1 + ($interest_rate_effective/100))) + ($income * ($income_contribute/100)))*(1-($inflation/100)),2);
         array_push($total_by_year,$total);
         array_push($inflation_by_year,$inflation_total);
         $income_current = $income_current * (1 + ($income_change/100));
