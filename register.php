@@ -1,6 +1,7 @@
 <?php
     include "view/header.php";
     
+    $page_title = "Register Page";
     //Align all text to center
     echo "<div style='text-align: center'>";
 

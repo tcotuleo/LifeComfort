@@ -2,6 +2,8 @@
     //This will start a session
     session_start();
 
+    $page_title = "Reset password page";
+    
     //Check for the database connection
     require("connect.php");
 

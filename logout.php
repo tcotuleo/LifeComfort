@@ -5,6 +5,7 @@
     //Align all text to center
     echo "<div style='text-align: center'>";
     
+    $page_title = "Logout";
     include "view/header.php";
 
     //To distroy the session

@@ -1,4 +1,6 @@
-
+<?php
+$page_title = "Disclaimer Page";
+?>
     <div style='text-align: center'>
     <div class="center">
         <p><h2>Disclaimer</h2></p>
@@ -12,5 +14,6 @@
     </div>
 
         <a href=login.php><button type='button' >I Agree and Login</button></a>
+        <a href=disagree.php><button type='button' >I Disagree</button></a>
 
     </div>

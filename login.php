@@ -5,6 +5,7 @@
     //Align all text to center
     echo "<div style='text-align: center'>";
     
+    $page_title = "Login Page";
     include "view/header.php";
 
     //Check if a user is already logged in
