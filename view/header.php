@@ -11,5 +11,10 @@
         <link rel="stylesheet" type="text/css" href="dist/jquery.jqplot.css" />
     </head>
     <body>
+        <?php
+        
+
+?>
+        <h3 id = "greeting"> Thank you for choosing LifeComfort. This calculator can be used to make a comfortable retirement plan.</h3><br>
         <p align="middle"> <img src="view/logo.jpg" width="250" height="200" ></p>
-            <h3 id = "greeting"> Thank you for choosing LifeComfort. This calculator can be used to make a comfortable retirement plan.</h3><br>
+            

@@ -5,7 +5,7 @@
     //Align all text to center
     echo "<div style='text-align: center'>";
     
-    include "view/header.php";
+    include_once "view/header.php";
 
     //Check if a user is already logged in
     if (isset($_SESSION['username']) && isset($_SESSION['password'])){
@@ -19,44 +19,43 @@
     //Display the logged in if a user already logged in.
     if(isset($username) && isset($password)){
         
-        echo "You are already logged in as <b>$dbusername</b>. please continue on our <a href=website.php><button type='button'>Main Page</button></a>";
+        echo "You are already logged in as <b>$dbusername</b>. please continue on our <a href=index.php>Index</a>";
     }
     else{
         
-        //Create a varible to display the login form.
-        $form = "<form action='login.php' method='post'> "
+        //Create a varible to display the change password request form.
+        $form = "<form action='forgotpass.php' method='post'> "
             . "<table align='center' width='25%' bordercolor='#D2691E' bgcolor='#A3C1AD'> "
             . "<tr> "
             . "<td> Username: </td> "
             . "<td> <input type='text' name='username' size='30'> </td> "
             . "</tr>"
             . "<tr> "
-            . "<td> Password: </td> "
-            . "<td> <input type='password' name='password' size='30'> </td> "
+            . "<td> Email: </td> "
+            . "<td> <input type='text' name='email' size='30'/> </td> "
             . "</tr>"
             . "</table> "
-            . "<input type='submit' name='loginbutton' value='Login'>"
-            . "<a href=forgotpass.php><button type='button'>Forgot password?</button></a>"
-            . "<a href=index.php><button type='button'>Home</button></a>"
+            . "<input type='submit' name='submitbtn' value='Submit'>"
+            . "<a href=index.php><button type='button'>Cancel</button></a>"
             . "</form>";
         
         //This if statement will run if the login button is pressed.
-        if (isset($_POST['loginbutton'])){
+        if (isset($_POST['submitbtn'])){
 
             //Get the entered username from the form.
-            $username = $_REQUEST['username'];
+            $getusername = $_POST['username'];
 
-            //Get the entered password from the form.
-            $password = $_REQUEST['password'];
+            //Get the entered email address
+            $getemail = $_POST['email'];
 
             //Check if the entered username is not empty.
-            if ($username != NULL){
+            if ($getusername != NULL){
 
-                //Check if the entered password is not empty.
-                if ($password != NULL){
+                //Check if the entered email is not empty.
+                if ($getemail != NULL){
 
                     //Check if entered data matches our database record.
-                    $result = mysql_query("SELECT * FROM users WHERE username='$username'");
+                    $result = mysql_query("SELECT * FROM users WHERE username='$getusername'");
                     $row = mysql_fetch_array($result);
                     $id = $row['id'];
 
@@ -65,43 +64,42 @@
                     $user = $row2['username'];
 
                     //Check if the entered username matches the username in our database system.
-                    if($username != $user){
+                    if($getusername != $user){
 
-                        echo "Your <font color='red'>USERNAME</font> is wrong! . $form";
+                        echo "<font color='red'>USERNAME</font> is wrong! . $form";
                         exit();
                     }
                     
-                    $pass_check = mysql_query("SELECT * FROM users WHERE username='$username' AND id='$id'");
+                    $pass_check = mysql_query("SELECT * FROM users WHERE username='$getusername' AND id='$id'");
                     $row3 = mysql_fetch_array($pass_check);
                     $email = $row3['email'];
-                    $select_pass = mysql_query("SELECT * FROM users WHERE username='$username' AND id='$id' AND email='$email'");
-                    $row4 = mysql_fetch_array($select_pass);
-                    $real_password = $row4['password'];
                     
                     //Check if the entered password matches the associated username in our database.
-                    if($password != $real_password){
+                    if($getemail != $email){
 
-                        echo "You must enter the correct <font color='red'>PASSWORD</font>!. $form";
+                        echo "You must enter the correct <font color='red'>EMAIL</font> address associated with your username. $form";
                         exit();
-                    }
+                    }else{
 
-                    //Now if everything is correct let's finish his/her/its login
-                    $_SESSION["username"] = $username;
-                    $_SESSION["password"] = $password;
-                    include 'website.php';
+                        //Now if everything is correct let's finish his/her change password request 
+                        $_SESSION["username"] = $getusername;
+                        $_SESSION["email"] = $getemail;
+                        include 'updatepass.php';  
+                    }             
                 }
                 else{
-                    echo "You must enter your <font color='red'>PASSWORD</font>. $form";
-                }
+                    echo "You must enter your <font color='red'>Email</font>. $form";
+                }      
             }
             else{
                 echo "You must enter your <font color='red'>USERNAME</font>. $form";
             }
         }
+        //This else statement will run if user didn't enter any data in the change password request form.
         else {
             echo $form;
         }
     }
-    
+
     include "view/footer.php";
 ?>

@@ -1,14 +1,16 @@
 body{
-    background-color:#E6E6E6;
+    background-color: white;
 }
+
 
 #greeting{
     float:top;
     text-align:center;
     border-radius: 3px;
-    border: 3px solid #31B404;
-    background-color: #31B404;
+    border: 3px solid #D2691E;
+    background-color: #808080;
     display: block;
+    color: #D3D3D3;
 }
 
 #main heading{
@@ -16,11 +18,12 @@ body{
 }
 
 #values {
+   margin-left: auto;
     float: left;
 }
 
 #chart1 {
-    float: right;
+    float: left;
 }
 
 #values_title{
@@ -98,3 +101,59 @@ padding: 8px;
  .error_message {
      color: red;
  }
+ p.pos_fixed {
+    position: fixed;
+    top: 30px;
+    right: 5px;
+}
+
+h2.pos_left {
+    position: relative;
+    left: -20px;
+}
+
+h2.pos_right {
+    position: relative;
+    left: 20px;
+}
+#box1, #box2 {
+    width: 600;
+    height: 450px;
+    position: relative;
+    display: inline-block;
+}
+.centerDiv { 
+    width: 100%; 
+    height:450px; 
+    margin: 0 auto; 
+
+} 
+
+.div1 { 
+    width: 50%; 
+    height:450px; 
+
+    float:left; } 
+
+.div2 { 
+    width: 50%; 
+    height:450px; 
+
+    float:left; }
+
+.center {
+    margin-left: auto;
+    margin-right: auto;
+    width: 60%;
+    background-color: #A3C1AD;
+    border: 3px solid #D2691E;
+}
+
+.center_button {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+center_table {
+    align: center;
+  }
