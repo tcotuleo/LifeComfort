@@ -49,7 +49,7 @@
             $non_number = TRUE;
         }
     } else {
-        $income_change = 50;
+        $income_change = 5;
     }
     if (isset($_POST['income_contribute'])) {
         $income_contribute = $_POST['income_contribute'];
@@ -132,8 +132,8 @@
                 $interest_rate_effective = $new_interest;
             }
             
-            $total = round(($total * (1 + ($interest_rate_effective/100))) + ($income * ($income_contribute/100)),2);
-            $inflation_total = round((($inflation_total * (1 + ($interest_rate_effective/100))) + ($income * ($income_contribute/100)))*(1-($inflation/100)),2);
+            $total = round(($total * (1 + ($interest_rate_effective/100))) + ($income_current * ($income_contribute/100)),2);
+            $inflation_total = round((($inflation_total * (1 + ($interest_rate_effective/100))) + ($income_current * ($income_contribute/100)))*(1-($inflation/100)),2);
             array_push($total_by_year,$total);
             array_push($inflation_by_year,$inflation_total);
             $income_current = $income_current * (1 + ($income_change/100));
