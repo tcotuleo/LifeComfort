@@ -29,6 +29,7 @@ else{
                 . "</tr> <br />"
                 . "</table> "
                 . "<input type='submit' name='loginbutton' value='Login' />"
+                ."<a href=index.php><button type='button'>Home</button></a>"
                 ."</div>"
                 . "</form>";
 
