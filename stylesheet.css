@@ -19,10 +19,10 @@ body{
 
 #values {
    margin-left: auto;
-    float: left;
+   float: left;
 }
 
-#chart1 {
+#chart_div {
     float: left;
 }
 
