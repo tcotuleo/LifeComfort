@@ -150,16 +150,29 @@
     
     $chart_array_json = json_encode($chart_array);
 ?>
+    <!--Load the AJAX API-->
     <script type="text/javascript" src="https://www.google.com/jsapi"></script>
     <script type="text/javascript">
-      var chart_array = <?php echo $chart_array_json ?>;
+      
+      // Load the Visualization API and the piechart package.
       google.load("visualization", "1", {packages:["corechart"]});
+      
+      // Set a callback to run when the Google Visualization API is loaded.
       google.setOnLoadCallback(drawChart);
+      
+      //Populate JavaScript array with PHP Array
+      var chart_array = <?php echo $chart_array_json ?>;
+      
+      // Callback that creates and populates a data table,
+      // instantiates the line graph, passes in the data and
+      // draws it.
       function drawChart() {
         var data = google.visualization.arrayToDataTable(chart_array);
 
         var options = {
           title: 'Retirement Savings',
+          hAxis: {title:'Age'},
+          vAxis: {title:'Net Worth'},
           animation:{
             duration: 1000,
             easing: 'out',
