@@ -26,10 +26,15 @@
     $non_number = FALSE;
     if (isset($_POST['age'])) {
         $age = $_POST['age'];
-        if(!is_numeric($age)){
-            echo "<p class=\"error_message\">Age must be a number";
+        if($age < 0 ){
+            echo "<p class=\"error_message\">Age cannot be less than 0.";
             $non_number = TRUE;
         }
+        if($age > 65 ){
+            echo "<p class=\"error_message\">Your current age should be less than 65.";
+            $non_number = TRUE;
+        }
+        
     } else {
         $age = 30;
     }
@@ -62,6 +67,14 @@
     }
     if (isset($_POST['age_retirement'])) {
         $age_retirement = $_POST['age_retirement'];
+        if($age_retirement < 0 ){
+            echo "<p class=\"error_message\">Retirement age cannot be less than 0.";
+            $non_number = TRUE;
+        }
+        if($age_retirement < $age ){
+            echo "<p class=\"error_message\">Your retirement age should not be less than your current age.";
+            $non_number = TRUE;
+        }
         if(!is_numeric($age_retirement)){
             echo "<p class=\"error_message\">Age of retirement must be a number";
             $non_number = TRUE;
