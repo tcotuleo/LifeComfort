@@ -3,10 +3,10 @@
     session_start();
 
     //Align all text to center
-    echo "<div style='text-align: center'>";
+    //echo "<div style='text-align: center'>";
     
     $page_title = "Login Page";
-    include "view/header.php";
+    include "view/newheader.php";
 
     //Check if a user is already logged in
     if (isset($_SESSION['username']) && isset($_SESSION['password'])){
@@ -25,21 +25,35 @@
     else{
         
         //Create a varible to display the login form.
-        $form = "<form action='login.php' method='post'> "
-            . "<table align='center' width='25%' bordercolor='#D2691E' bgcolor='#A3C1AD'> "
-            . "<tr> "
-            . "<td> Username: </td> "
-            . "<td> <input type='text' name='username' size='30'> </td> "
-            . "</tr>"
-            . "<tr> "
-            . "<td> Password: </td> "
-            . "<td> <input type='password' name='password' size='30'> </td> "
-            . "</tr>"
-            . "</table> "
-            . "<input type='submit' name='loginbutton' value='Login'>"
-            . "<a href=forgotpass.php><button type='button'>Forgot password?</button></a>"
-            . "<a href=index.php><button type='button'>Home</button></a>"
-            . "</form>";
+        $form = "<div class='login-card'>
+                    <h1>Log-in</h1><br>
+                    <form action='login.php' method='post'>
+                        <input type='text' name='username' placeholder='Username'>
+                        <input type='password' name='password' placeholder='Password'>
+                        <input type='submit' name='loginbutton' class='login login-submit' value='Login'>
+                    </form>
+
+                    <div class='login-help'>
+                      <a href='register.php'>New user?</a> • <a href='forgotpass.php'>Forgot Password</a>
+                    </div>
+                </div>";
+        
+//        $form_old = "<div class='login-card'> "
+//            . "<h1>Log-in</h1><br><form action='login.php' method='post'> "
+//            . "<table align='center' width='25%' bordercolor='#D2691E' bgcolor='#A3C1AD'> "
+//            . "<tr> "
+//            . "<td> Username: </td> "
+//            . "<td> <input type='text' name='username' size='30'> </td> "
+//            . "</tr>"
+//            . "<tr> "
+//            . "<td> Password: </td> "
+//            . "<td> <input type='password' name='password' size='30'> </td> "
+//            . "</tr>"
+//            . "</table> "
+//            . "<input type='submit' name='loginbutton' value='Login'>"
+//            . "<a href=forgotpass.php><button type='button'>Forgot password?</button></a>"
+//            . "<a href=index.php><button type='button'>Home</button></a>"
+//            . "</form>";
         
         //This if statement will run if the login button is pressed.
         if (isset($_POST['loginbutton'])){

@@ -1,9 +1,24 @@
 <?php
 $page_title = "Disclaimer Page";
 ?>
-    <div style='text-align: center'>
-    <div class="center">
-        <p><h2>Disclaimer</h2></p>
+<html>
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <title>Disclaimer Page</title>
+
+  <link rel='stylesheet' href='http://codepen.io/assets/libs/fullpage/jquery-ui.css'>
+
+    <link rel="stylesheet" href="style.css" media="screen" type="text/css" />
+
+</head>
+
+<body>
+
+    <div class='disclaimer-card'>
+    <h1>Disclaimer</h1><br>
         <p>This system is intended to provide an ESTIMATED PROJECTION of your retirement plan
             based on the information provided by you. The output estimate generated using 
             LifeComfort will depend on how accurately the numbers chosen by you match the actual
@@ -11,9 +26,14 @@ $page_title = "Disclaimer Page";
         <p>This calculator is only a tool you can use to help project your future benefits,
             our company is not liable for any decision user makes based on this information;
             If you wish to proceed, hit “I Agree”</p>
-    </div>
+   
+        <div class='login-help'>
+            <a href='login.php'>I Agree and Login</a> • <a href='disagree.php'>I Disagree</a>
+                    </div>
 
-        <a href=login.php><button type='button' >I Agree and Login</button></a>
-        <a href=disagree.php><button type='button' >I Disagree</button></a>
-
     </div>
+    <script src='http://codepen.io/assets/libs/fullpage/jquery_and_jqueryui.js'></script>
+
+</body>
+
+</html>

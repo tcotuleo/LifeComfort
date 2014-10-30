@@ -1,33 +1,48 @@
 <?php
-    include "view/header.php";
+    include "view/newheader.php";
     
     $page_title = "Register Page";
     //Align all text to center
     echo "<div style='text-align: center'>";
 
     //Create a varible to display the register form.
-    $form = "<form action='register.php' method='post'> "
-        . "<table align='center' width='25%' bordercolor='#D2691E' bgcolor='#A3C1AD'> "
-        . "<tr> "
-        . "<td> Username: </td> "
-        . "<td> <input type='text' name='user' value='$getuser' /> </td> "
-        . "</tr>"
-        . "<tr> "
-        . "<td> Email: </td> "
-        . "<td> <input type='text' name='email' value='$getemail' /> </td> "
-        . "</tr>"
-        . "<tr> "
-        . "<td> Password: </td> "
-        . "<td> <input type='password' name='pass' value='' /> </td> "
-        . "</tr>"
-        . "<tr> "
-        . "<td> Retype: </td> "
-        . "<td> <input type='password' name='retypepass' value='' /> </td> "
-        . "</tr>"
-        . "</table> "
-        . "<input type='submit' name='registerbtn' value='Register' /> "
-        . "<a href=index.php><button type='button'>Go back</button></a> "
-        . "</form>";
+    $form = "<div class='login-card'>
+                <h1>Register</h1><br>
+                <form action='register.php' method='post'>
+                    <input type='text' name='user' placeholder='Username'>
+                    <input type='text' name='email' placeholder='Email'>
+                    <input type='password' name='pass' placeholder='Password'>
+                    <input type='password' name='retypepass' placeholder='Re-type Password'>
+                    <input type='submit' name='registerbtn' class='login login-submit' value='Register'>
+                </form>
+
+                <div class='login-help'>
+                  <a href='index.php'>Go back</a>
+                </div>
+            </div>";
+    
+ //   $form2 = "<form action='register.php' method='post'> "
+ //       . "<table align='center' width='25%' bordercolor='#D2691E' bgcolor='#A3C1AD'> "
+ //       . "<tr> "
+ //       . "<td> Username: </td> "
+ //       . "<td> <input type='text' name='user' value='$getuser' /> </td> "
+ //       . "</tr>"
+ //       . "<tr> "
+ //       . "<td> Email: </td> "
+ //       . "<td> <input type='text' name='email' value='$getemail' /> </td> "
+ //       . "</tr>"
+ //       . "<tr> "
+ //       . "<td> Password: </td> "
+ //       . "<td> <input type='password' name='pass' value='' /> </td> "
+ //       . "</tr>"
+ //       . "<tr> "
+ //       . "<td> Retype: </td> "
+ //       . "<td> <input type='password' name='retypepass' value='' /> </td> "
+ //       . "</tr>"
+ //       . "</table> "
+ //       . "<input type='submit' name='registerbtn' value='Register' /> "
+ //       . "<a href=index.php><button type='button'>Go back</button></a> "
+ //       . "</form>";
         
 
     //This if statement will run if the register button is pressed.

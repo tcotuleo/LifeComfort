@@ -6,7 +6,7 @@
     echo "<div style='text-align: center'>";
     
     $page_title = "Password reset page";
-    include_once "view/header.php";
+    include_once "view/newheader.php";
 
     //Check if a user is already logged in
     if (isset($_SESSION['username']) && isset($_SESSION['password'])){
@@ -25,20 +25,18 @@
     else{
         
         //Create a varible to display the change password request form.
-        $form = "<form action='forgotpass.php' method='post'> "
-            . "<table align='center' width='25%' bordercolor='#D2691E' bgcolor='#A3C1AD'> "
-            . "<tr> "
-            . "<td> Username: </td> "
-            . "<td> <input type='text' name='username' size='30'> </td> "
-            . "</tr>"
-            . "<tr> "
-            . "<td> Email: </td> "
-            . "<td> <input type='text' name='email' size='30'/> </td> "
-            . "</tr>"
-            . "</table> "
-            . "<input type='submit' name='submitbtn' value='Submit'>"
-            . "<a href=index.php><button type='button'>Cancel</button></a>"
-            . "</form>";
+        $form = "<div class='login-card'>
+                    <h1>Forgot Password</h1><br>
+                    <form action='forgotpass.php' method='post'>
+                        <input type='text' name='username' placeholder='Username'>
+                        <input type='text' name='email' placeholder='Email'>
+                        <input type='submit' name='submitbtn' class='login login-submit' value='Submit'>
+                    </form>
+
+                    <div class='login-help'>
+                      <a href='index.php'>Cancel</a>
+                    </div>
+                </div>";
         
         //This if statement will run if the login button is pressed.
         if (isset($_POST['submitbtn'])){
