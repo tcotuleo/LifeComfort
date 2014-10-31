@@ -1,6 +1,6 @@
 <?php
     //This will start a session
-    session_start();
+//    session_start();
 
     $page_title = "Reset password page";
     
@@ -35,16 +35,20 @@
     if (isset($_POST['submitbtn'])){
 
         //Get the entered password
+        if (isset($_POST['pass'])){
         $getnewpass = $_POST['pass'];
+        }
 
         //Get the retyped password that was entered
+        if (isset($_POST['retypepass'])) {
         $getretypepass = $_POST['retypepass'];
+        }
 
         //Check if the password is entered.
-        if ($getnewpass){
+        if (isset($getnewpass)){
 
             //Check if the password is retyped or not.
-            if ($getretypepass){
+            if (isset($getretypepass)){
 
                 //Check if the password matches the retyped password.
                 if ($getnewpass === $getretypepass){

@@ -1,6 +1,6 @@
 <?php
     //This will start a session
-    session_start();
+//    session_start();
 
     //Align all text to center
     //echo "<div style='text-align: center'>";

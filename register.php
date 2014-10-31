@@ -46,7 +46,7 @@
         
 
     //This if statement will run if the register button is pressed.
-    if ($_POST['registerbtn']){
+    if (isset($_POST['registerbtn'])){
         
         //Get the entered username
         $getuser = $_POST['user'];
