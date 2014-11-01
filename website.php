@@ -213,7 +213,7 @@
     <div id="values">
         <table align='center'> 
             <p id="values_title">Values </p>
-            <form action='login.php' method='post'>
+            <form action='website.php' method='post'>
                 <tr> <td>Age: </td><td> <input type="text" name="age" value=<?php echo $age ?> /><br> </td></tr>
                 <tr> <td>Income: </td><td> <input type="text" name="income" value=<?php echo $income ?> /><br> </td></tr>
                 <tr> <td>Income Change %: </td><td> <input type="text" name="income_change" value=<?php echo $income_change ?> /><br> </td></tr>
