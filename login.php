@@ -1,6 +1,8 @@
 <?php
     //This will start a session
-//    session_start();
+    if (session_status() == PHP_SESSION_NONE) {
+        session_start();
+    }
 
     //Align all text to center
     //echo "<div style='text-align: center'>";
@@ -19,7 +21,7 @@
     
     //Display the logged in if a user already logged in.
     if(isset($username) && isset($password)){
-        echo "You are already logged in as <b>$dbusername</b>. please continue on our <a href=website.php><button type='button'>Main Page</button></a>";
+        echo "You are already logged in as <b>$username</b>. please continue on our <a href=website.php><button type='button'>Main Page</button></a>";
     }
     else{
         

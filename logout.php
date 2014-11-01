@@ -6,7 +6,7 @@
     //echo "<div style='text-align: center'>";
     
     $page_title = "Logout";
-    include "view/newheader.php";
+    include "view/header.php";
 
     //To distroy the session
     session_destroy();

@@ -1,6 +1,8 @@
 <?php
     //This will start a session
-    session_start();
+    if (session_status() == PHP_SESSION_NONE) {
+        session_start();
+    }
     
     //Align all text to center
     echo "<div style='text-align: center'>";
@@ -12,16 +14,18 @@
     if (isset($_SESSION['username']) && isset($_SESSION['password'])){
         $username = $_SESSION['username'];
         $password = $_SESSION['password'];
+    } else {
+        echo "<script type='text/javascript'>alert('Both session variables are not set.')</script>";
     }
 
-    //If no user is logged in than display the main login page.
-    if(!isset($username) && !isset($password)){
-        echo "Welcome Guest! <br> <a href=login.php><button type='button'>Login</button></a> | <a href=register.php><button type='button'>Register</button></a>";
-        exit();
-    }
-    else{
-        echo "<p class='pos_fixed'>Welcome, <font color='red'>".$username."</font> <a href=logout.php><button type='button'>Logout</button></a></p>";
-    }
+    //If no user is logged in then display the main login page.
+//    if(!isset($username) && !isset($password)){
+//        echo "Welcome Guest! <br> <a href=login.php><button type='button'>Login</button></a> | <a href=register.php><button type='button'>Register</button></a>";
+//        exit();
+//    }
+//    else{
+//        echo "<p class='pos_fixed'>Welcome, <font color='red'>".$username."</font> <a href=logout.php><button type='button'>Logout</button></a></p>";
+//    }
 
     $non_number = FALSE;
     if (isset($_POST['age'])) {
@@ -209,7 +213,7 @@
     <div id="values">
         <table align='center'> 
             <p id="values_title">Values </p>
-            <form action='website.php' method='post'>
+            <form action='login.php' method='post'>
                 <tr> <td>Age: </td><td> <input type="text" name="age" value=<?php echo $age ?> /><br> </td></tr>
                 <tr> <td>Income: </td><td> <input type="text" name="income" value=<?php echo $income ?> /><br> </td></tr>
                 <tr> <td>Income Change %: </td><td> <input type="text" name="income_change" value=<?php echo $income_change ?> /><br> </td></tr>
@@ -220,7 +224,8 @@
                 <tr> <td>Year of Interest Change: </td><td> <input type="text" name="year_interest" value=<?php echo $year_interest ?> /><br> </td></tr>
                 <tr> <td>New Interest %: </td><td> <input type="text" name="new_interest" value=<?php echo $new_interest ?> /><br> </td></tr>
                 <tr> <td>Inflation %: </td><td> <input type="text" name="inflation" value=<?php echo $inflation ?> /><br></td></tr>
-                <tr> <td><input id='button' type="submit" value="Calculate"></td> </tr>
+                <tr> <td><input id="button" type="submit" value="Calculate"></td> </tr>
+                <tr> <td><input id="button" type='button' onclick='showreport();' value='View Report'></td></tr>
             </form>
         </table>
     </div>
