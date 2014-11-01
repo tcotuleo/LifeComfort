@@ -1,7 +1,8 @@
 <?php
     //This will start a session
-//    session_start();
-
+    if (session_status() == PHP_SESSION_NONE) {
+        session_start();
+    }
     $page_title = "Reset password page";
     
     //Check for the database connection
