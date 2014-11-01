@@ -1,5 +1,5 @@
 <?php
-    include "view/newheader.php";
+    include "view/header.php";
     
     $page_title = "Register Page";
     //Align all text to center

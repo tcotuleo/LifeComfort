@@ -6,7 +6,7 @@
     echo "<div style='text-align: center'>";
     
     $page_title = "Password reset page";
-    include_once "view/newheader.php";
+    include_once "view/header.php";
 
     //Check if a user is already logged in
     if (isset($_SESSION['username']) && isset($_SESSION['password'])){
