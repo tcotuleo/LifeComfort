@@ -19,13 +19,13 @@
     }
 
     //If no user is logged in then display the main login page.
-//    if(!isset($username) && !isset($password)){
-//        echo "Welcome Guest! <br> <a href=login.php><button type='button'>Login</button></a> | <a href=register.php><button type='button'>Register</button></a>";
-//        exit();
-//    }
-//    else{
-//        echo "<p class='pos_fixed'>Welcome, <font color='red'>".$username."</font> <a href=logout.php><button type='button'>Logout</button></a></p>";
-//    }
+    if(!isset($username) && !isset($password)){
+        echo "Welcome Guest! <br> <a href=login.php><button type='button'>Login</button></a> | <a href=register.php><button type='button'>Register</button></a>";
+        exit();
+    }
+    else{
+        echo "<p class='pos_fixed'>Welcome, <font color='red'>".$username."</font> <a href=logout.php><button type='button'>Logout</button></a></p>";
+    }
 
     $non_number = FALSE;
     if (isset($_POST['age'])) {
