@@ -18,20 +18,19 @@
     }
     
     //Display the form so that the user can enter the new passowrd.
-    $form = "<form action='updatepass.php' method='post'> "
-        . "<table align='center' width='25%' bordercolor='#D2691E' bgcolor='#A3C1AD'> "
-        . "<tr> "
-        . "<td> New Password: </td> "
-        . "<td> <input type='password' name='pass' value='' /> </td> "
-        . "</tr>"
-        . "<tr> "
-        . "<td> Retype: </td> "
-        . "<td> <input type='password' name='retypepass' value='' /> </td> "
-        . "</tr>"
-        . "</table> "
-        . "<input type='submit' name='submitbtn' value='Submit' /> "
-        . "<a href=index.php><button type='button'>Cancel</button></a> "
-        . "</form>";
+    
+    $form = "<div class='login-card'>
+                    <h1>Update Password</h1><br>
+                    <form action='updatepass.php' method='post'>
+                        <input type='password' name='pass' placeholder='New password'>
+                        <input type='password' name='retypepass' placeholder='Re-type password'>
+                        <input type='submit' name='submitbtn' class='login login-submit' value='Submit'>
+                    </form>
+
+                    <div class='login-help'>
+                      <a href='index.php'>Cancel</a>
+                    </div>
+                </div>";
     
     if (isset($_POST['submitbtn'])){
 
@@ -67,8 +66,12 @@
                     
                     //Display the confirmation message if the password was change.
                     if ($getnewpass === $real_password){
-                        echo "<h3>Your password has been changed successfully. Thank you!<br></h3>";
-                        echo "<a href=login.php><button type='button'>Login</button></a>";
+                        include_once "view/header.php";
+                        echo "<div class='displaymessage-card'>"
+                        . "<p>Your password has been changed successfully. Thank you!</p>"
+                        . "<div class='login-help'>
+                      <a href='login.php'>Login</a>
+                    </div></div>";
                     }
                     else{
                         echo "An error has occured. Your password was not changed successfully.";
@@ -83,8 +86,10 @@
             }
         }
         else{
-            echo "Please enter your new password below. $form";
+            echo "$form";
         }
+        
     }
+        
 ?>
 

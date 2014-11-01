@@ -10,5 +10,5 @@
 
     </head>
     <body>
-   
+   <p align="middle"> <img src="view/logo.png" width="350" height="300" ></p>
             

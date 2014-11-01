@@ -6,7 +6,7 @@
     //echo "<div style='text-align: center'>";
     
     $page_title = "Login/Register";
-    include_once "view/header.php";
+    //include_once "view/header.php";
     
     //Check if a user is already logged in
     if (isset($_SESSION['username']) && isset($_SESSION['password'])){

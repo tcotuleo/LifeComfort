@@ -14,3 +14,21 @@ and open the template in the editor.
         <div>TODO write content</div>
     </body>
 </html>
+$form = "<div class='login-card'>
+                    <h1>Update Password</h1><br>
+                    <form action='updatepass.php' method='post'>
+                        <input type='password' name='pass' placeholder='New password'>
+                        <input type='password' name='retypepass' placeholder='Re-type password'>
+                        <input type='submit' name='submitbtn' class='login login-submit' value='Submit'>
+                    </form>
+
+                    <div class='login-help'>
+                      <a href='index.php'>Cancel</a>
+                    </div>
+                </div>";
+                
+                echo "<div class='displaymessage-card'>"
+                        . "<p>Your password has been changed successfully. Thank you!</p>"
+                        . "<div class='login-help'>
+                      <a href='login.php'>Login</a>
+                    </div>";

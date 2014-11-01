@@ -82,7 +82,8 @@
                     //Check if the entered username matches the username in our database system.
                     if($username != $user){
 
-                        echo "Your <font color='red'>USERNAME</font> is wrong! . $form";
+                        echo "<div class='displaymessage-card'>"
+                        . "<p>Your <font color='red'>USERNAME</font> is wrong! . $form";
                         exit();
                     }
                     
