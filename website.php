@@ -193,8 +193,15 @@
         };
 
         var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
-
         chart.draw(data, options);
+        
+        function resize () {
+            var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
+            chart.draw(data, options);
+        }
+
+        window.onload = resize();
+        window.onresize = resize;
       }
     </script>
     
@@ -219,7 +226,7 @@
     </div>
         
     <!--Display the chart -->
-    <div id="chart_div" style="width: 900px; height: 500px;"></div>
+    <div id="chart_div" style="width: 700px; height: 400px;"></div>
 
     <!--Display the summary message -->
     <div id="message">

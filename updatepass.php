@@ -74,15 +74,20 @@
                     </div></div>";
                     }
                     else{
-                        echo "An error has occured. Your password was not changed successfully.";
+//                        echo "An error has occured. Your password was not changed successfully.";
+                        echo "<script type='text/javascript'>alert('An error has occured. Your password was not changed successfully.')</script>";
                     }
                 }
                 else{
-                    echo "Your <font color='red'>PASSWORD</font> did not match. $form";
+//                    echo "Your <font color='red'>PASSWORD</font> did not match. $form";
+                    echo "<script type='text/javascript'>alert('Your <font color='red'>PASSWORD</font> did not match.')</script>";
+                    echo $form;
                 }   
             }
             else{
-                echo "You must retype your <font color='red'>PASSWORD</font> to change your password. $form";
+//                echo "You must retype your <font color='red'>PASSWORD</font> to change your password. $form";
+                echo "<script type='text/javascript'>alert('You must retype your <font color='red'>PASSWORD</font> to change your password.')</script>";
+                echo $form;
             }
         }
         else{

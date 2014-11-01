@@ -65,7 +65,9 @@
                     //Check if the entered username matches the username in our database system.
                     if($getusername != $user){
 
-                        echo "<font color='red'>USERNAME</font> is wrong! . $form";
+//                        echo "<font color='red'>USERNAME</font> is wrong! . $form";
+                        echo "<script type='text/javascript'>alert('USERNAME is wrong!')</script>";
+                        echo $form;
                         exit();
                     }
                     
@@ -76,7 +78,9 @@
                     //Check if the entered password matches the associated username in our database.
                     if($getemail != $email){
 
-                        echo "You must enter the correct <font color='red'>EMAIL</font> address associated with your username. $form";
+//                        echo "You must enter the correct <font color='red'>EMAIL</font> address associated with your username. $form";
+                        echo "<script type='text/javascript'>alert('You must enter the correct EMAIL address associated with your username.')</script>";
+                        echo $form;
                         exit();
                     }else{
 
@@ -87,11 +91,15 @@
                     }             
                 }
                 else{
-                    echo "You must enter your <font color='red'>Email</font>. $form";
+//                    echo "You must enter your <font color='red'>Email</font>. $form";
+                    echo "<script type='text/javascript'>alert('You must enter your EMAIL.')</script>";
+                    echo $form;
                 }      
             }
             else{
                 echo "You must enter your <font color='red'>USERNAME</font>. $form";
+                echo "<script type='text/javascript'>alert('You must enter your USERNAME.')</script>";
+                echo $form;
             }
         }
         //This else statement will run if user didn't enter any data in the change password request form.

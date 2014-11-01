@@ -87,7 +87,7 @@
                                 if ($numrows == 0){
                                     
                                     //Check if the entered email matched any record in our database.
-                                    $query = mysql_query("SELECT * FROM users WHERE username='$getemail'");
+                                    $query = mysql_query("SELECT * FROM users WHERE email='$getemail'");
                                     $numrows = mysql_num_rows($query);
                                     if ($numrows == 0){
                                         
@@ -104,43 +104,60 @@
                                                 
                                                 
                                         }else{
-                                            echo "An error has occured. Your account was not created.";
+//                                            echo "An error has occurred. Your account was not created.";
+                                            echo "<script type='text/javascript'>alert('An error has occurred. Your account was not created.')</script>";
                                         }
                                         
                                     }
                                     else{
-                                        echo "The user already exists with the same username. $form";
+//                                        echo "The user already exists with the same username. $form";
+                                        echo "<script type='text/javascript'>alert('That USERNAME already exists.')</script>";
+                                        echo $form;
                                     }
                                         
                                 }
                                 else{
-                                    echo "The user already exists with the same email address. $form";
+//                                    echo "A user already exists with the same email address. $form";
+                                    echo "<script type='text/javascript'>alert('A username already exists with that EMAIL address.')</script>";
+                                    echo $form;
                                 }
                                     
                                 mysql_close();
                             }
                             else{
-                                echo "You must enter a valid <font color='red'>EMAIL</font> address to register. $form";
+//                                echo "You must enter a valid <font color='red'>EMAIL</font> address to register. $form";
+                                echo "<script type='text/javascript'>alert('You must enter a valid EMAIL address to register.')</script>";
+                                echo $form;
                             }
                         }
                         else{
-                            echo "Your <font color='red'>PASSWORD</font> did not match. $form";
+//                            echo "Your <font color='red'>PASSWORD</font> did not match. $form";
+                            echo "<script type='text/javascript'>alert('Your retyped PASSWORD did not match')</script>";
+                            echo $form;
                         }
                     }
                     else{
-                        echo "You must retype your <font color='red'>PASSWORD</font> to register. $form";
+//                        echo "You must retype your <font color='red'>PASSWORD</font> to register. $form";
+                        echo "<script type='text/javascript'>alert('You must retype your PASSWORD to register')</script>";
+                        echo $form;
                     }
                 }
                 else{
-                    echo "You must enter your <font color='red'>PASSWORD</font> to register. $form";
+//                    echo "You must enter your <font color='red'>PASSWORD</font> to register. $form";
+                    echo "<script type='text/javascript'>alert('You must enter your PASSWORD to register')</script>";
+                    echo $form;
                 }
             }
             else{
-                echo "You must enter your <font color='red'>EMAIL</font> to register. $form";
+//                echo "You must enter your <font color='red'>EMAIL</font> to register. $form";
+                echo "<script type='text/javascript'>alert('You must enter your EMAIL to register')</script>";
+                echo $form;
             }
         }
         else{
-            echo "You must enter your <font color='red'>USERNAME</font> to register. $form";
+//            echo "You must enter your <font color='red'>USERNAME</font> to register. $form";
+            echo "<script type='text/javascript'>alert('You must enter your USERNAME to register')</script>";
+            echo $form;
         }
     }
     else{

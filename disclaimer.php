@@ -24,8 +24,8 @@ $page_title = "Disclaimer Page";
             LifeComfort will depend on how accurately the numbers chosen by you match the actual
             numbers derived in the future.</p>
         <p>This calculator is only a tool you can use to help project your future benefits,
-            our company is not liable for any decision user makes based on this information;
-            If you wish to proceed, hit “I Agree”</p>
+            our company is not liable for any decision a user makes based on this information;
+            If you wish to proceed, hit “I Agree and Login”</p>
    
         <div class='login-help'>
             <a href='login.php'>I Agree and Login</a> • <a href='disagree.php'>I Disagree</a>

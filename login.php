@@ -19,7 +19,6 @@
     
     //Display the logged in if a user already logged in.
     if(isset($username) && isset($password)){
-        
         echo "You are already logged in as <b>$dbusername</b>. please continue on our <a href=website.php><button type='button'>Main Page</button></a>";
     }
     else{
@@ -82,8 +81,10 @@
                     //Check if the entered username matches the username in our database system.
                     if($username != $user){
 
-                        echo "<div class='displaymessage-card'>"
-                        . "<p>Your <font color='red'>USERNAME</font> is wrong! . $form";
+//                        echo "<div class='displaymessage-card'>"
+//                        . "<p>Your <font color='red'>USERNAME</font> is wrong! . $form";
+                        echo "<script type='text/javascript'>alert('Your USERNAME is incorrect!')</script>";
+                        echo $form;
                         exit();
                     }
                     
@@ -97,7 +98,9 @@
                     //Check if the entered password matches the associated username in our database.
                     if($password != $real_password){
 
-                        echo "You must enter the correct <font color='red'>PASSWORD</font>!. $form";
+//                        echo "You must enter the correct <font color='red'>PASSWORD</font>!. $form";
+                        echo "<script type='text/javascript'>alert('You must enter the correct PASSWORD.')</script>";
+                        echo $form;
                         exit();
                     }
 
@@ -107,11 +110,15 @@
                     include 'website.php';
                 }
                 else{
-                    echo "You must enter your <font color='red'>PASSWORD</font>. $form";
+//                    echo "You must enter your <font color='red'>PASSWORD</font>. $form";
+                    echo "<script type='text/javascript'>alert('You must enter your PASSWORD.')</script>";
+                    echo $form;
                 }
             }
             else{
-                echo "You must enter your <font color='red'>USERNAME</font>. $form";
+//                echo "You must enter your <font color='red'>USERNAME</font>. $form";
+                echo "<script type='text/javascript'>alert('You must enter your USERNAME.')</script>";
+                echo $form;
             }
         }
         else {
