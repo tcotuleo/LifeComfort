@@ -139,7 +139,7 @@
         $inflation_total = floatval($current_savings);
         $income_current = $income;
         
-        $title = array("Age", "Total", "Adjusted for inflation");
+        $title = array("Age", "Total Retirement Savings", "Total Adjusted for inflation");
         $chart_entry = array(strval($age), $total, $inflation_total);
         array_push($chart_array, $title);
         array_push($chart_array,$chart_entry);
@@ -166,6 +166,7 @@
     }
     
     $chart_array_json = json_encode($chart_array);
+    $_SESSION['chart_array_json'] = $chart_array_json;
 ?>
     <!--Load the AJAX API-->
     <script type="text/javascript" src="https://www.google.com/jsapi"></script>
@@ -225,9 +226,10 @@
                 <tr> <td>New Interest %: </td><td> <input type="text" name="new_interest" value=<?php echo $new_interest ?> /><br> </td></tr>
                 <tr> <td>Inflation %: </td><td> <input type="text" name="inflation" value=<?php echo $inflation ?> /><br></td></tr>
                 <tr> <td><input id="button" type="submit" value="Calculate"></td> </tr>
-                <tr> <td><input id="button" type='button' onclick='showreport();' value='View Report'></td></tr>
+                <!--<tr> <td><input id="button" type='button' onclick='report.php' value='View Report'></td></tr>-->
             </form>
         </table>
+        <a href = "report.php" target="_blank">View Report</a>
     </div>
         
     <!--Display the chart -->
