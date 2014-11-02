@@ -25,9 +25,12 @@
     //If no user logged in, Login and Register options are avaliable.
     else{
 
-        echo "<h2>Welcome, ".$username. "<h2> <br /> "
-            . "Please <a href=logout.php><button type='button'>Logout</button></a> OR "
-            . "Continue on our <a href=website.php><button type='button'>Main Page</button></a>";
+        include_once "view/header.php";
+        echo "<div class='login-card'>
+        <div class='login-help'> <h1>Welcome, ".$username. "<h1> <br />
+            <a href='logout.php'>Logout</a> • <a href='website.php'>Main Page</a>
+        </div>
+    </div>";
 
     }
     
