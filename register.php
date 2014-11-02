@@ -98,11 +98,10 @@
                                         $query = mysql_query("SELECT * FROM users WHERE username='$getuser'");
                                         $numrows = mysql_num_rows($query);
                                         if ($numrows == 1){
-                                                
+
                                             echo "<h3>".$getuser.", you are now registered. Thank you!<br></h3>";
-                                            include 'disclaimer.php';
-                                                
-                                                
+                                            echo "<p><a href='login.php'>Click here to log in.</a></p>";                                           
+                                                                                                
                                         }else{
 //                                            echo "An error has occurred. Your account was not created.";
                                             echo "<script type='text/javascript'>alert('An error has occurred. Your account was not created.')</script>";

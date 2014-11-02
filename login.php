@@ -35,7 +35,7 @@
                     </form>
 
                     <div class='login-help'>
-                      <a href='register.php'>New user?</a> • <a href='forgotpass.php'>Forgot Password</a>
+                      <a href='disclaimer.php'>New user?</a> • <a href='forgotpass.php'>Forgot Password</a>
                     </div>
                 </div>";
         

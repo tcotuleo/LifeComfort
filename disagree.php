@@ -19,11 +19,11 @@ $page_title = "Disclaimer Page";
 
     <div class='disclaimer-card'>
     <h1>Disclaimer</h1><br>
-        <p>You must agree the terms to use this web application.</p>
+        <p>You must agree to the terms to use this web application.</p>
         
    
         <div class='login-help'>
-            <a href='login.php'>I Agree and Login</a> • <a href='index.php'>Cancel</a>
+            <a href='register.php'>I Agree and Register</a> • <a href='index.php'>Cancel</a>
                     </div>
 
     </div>
