@@ -23,7 +23,7 @@ $page_title = "Disclaimer Page";
         
    
         <div class='login-help'>
-            <a href='register.php'>I Agree and Register</a> • <a href='index.php'>Cancel</a>
+            <a href='register.php'>I Agree</a> • <a href='index.php'>Cancel</a>
                     </div>
 
     </div>

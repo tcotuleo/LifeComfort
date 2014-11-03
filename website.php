@@ -25,6 +25,8 @@
     }
     else{
         echo "<p class='pos_fixed'>Welcome, <font color='red'>".$username."</font> <a href=logout.php><button type='button'>Logout</button></a></p>";
+        echo "<a href=referfriend.php><button type='button'>Refer a friend</button></a>";
+        
     }
 
     $non_number = FALSE;
@@ -211,10 +213,11 @@
     </script>
     
     <!--Display the values form -->
-    <div id="values">
-        <table align='center'> 
-            <p id="values_title">Values </p>
+    <div class='login-card' style="margin-left: 10px;">
+        
+            <h1>Values </h1>
             <form action='website.php' method='post'>
+                <table> 
                 <tr> <td>Age: </td><td> <input type="text" name="age" value=<?php echo $age ?> /><br> </td></tr>
                 <tr> <td>Income: </td><td> <input type="text" name="income" value=<?php echo $income ?> /><br> </td></tr>
                 <tr> <td>Income Change %: </td><td> <input type="text" name="income_change" value=<?php echo $income_change ?> /><br> </td></tr>
@@ -225,15 +228,19 @@
                 <tr> <td>Year of Interest Change: </td><td> <input type="text" name="year_interest" value=<?php echo $year_interest ?> /><br> </td></tr>
                 <tr> <td>New Interest %: </td><td> <input type="text" name="new_interest" value=<?php echo $new_interest ?> /><br> </td></tr>
                 <tr> <td>Inflation %: </td><td> <input type="text" name="inflation" value=<?php echo $inflation ?> /><br></td></tr>
-                <tr> <td><input id="button" type="submit" value="Calculate"></td> </tr>
+ 
+                </table>
                 <!--<tr> <td><input id="button" type='button' onclick='report.php' value='View Report'></td></tr>-->
+            <input type="submit" class='login login-submit' value="Calculate">
             </form>
-        </table>
-        <a href = "report.php" target="_blank">View Report</a>
+      <div class='login-help'>
+                   <a href = "report.php" target="_blank">View Report</a>
+                    </div>
+        
     </div>
         
     <!--Display the chart -->
-    <div id="chart_div" style="width: 700px; height: 400px;"></div>
+    <div id="chart_div" style="width: 700px; height: 400px; margin-right: 10px;"></div>
 
     <!--Display the summary message -->
     <div id="message">

@@ -28,7 +28,7 @@ $page_title = "Disclaimer Page";
             If you wish to proceed, hit “I Agree and Register”</p>
    
         <div class='login-help'>
-            <a href='register.php'>I Agree and Register</a> • <a href='disagree.php'>I Disagree</a>
+            <a href='register.php'>I Agree</a> • <a href='disagree.php'>I Disagree</a>
                     </div>
 
     </div>
