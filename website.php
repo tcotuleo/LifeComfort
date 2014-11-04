@@ -168,7 +168,7 @@
             
             $total = round(($total * (1 + ($interest_rate_effective/100))) + ($income_current * ($income_contribute/100)),2);
             $inflation_total = round((($inflation_total * (1 + ($interest_rate_effective/100))) + ($income_current * ($income_contribute/100)))*(1-($inflation/100)),2);
-            $chart_entry = array(strval($year+1), $total, $inflation_total);
+            $chart_entry = array(strval($year+1), number_format($total, 2, '.', ''), number_format($inflation_total, 2, '.', ''));
             array_push($chart_array,$chart_entry);
             $income_current = $income_current * (1 + ($income_change/100));
             $last_total=$total;
@@ -211,8 +211,8 @@
           }
         };
 
-        var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
-        chart.draw(data, options);
+//        var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
+//        chart.draw(data, options);
         
         function resize () {
             var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
@@ -252,12 +252,12 @@
     </div>
         
     <!--Display the chart -->
-    <div id="chart_div" style="width: 700px; height: 400px;"></div>
+    <div id="chart_div" style="width: 900px; height: 500px;"></div>
 
     <!--Display the summary message -->
     <div id="message">
-        <?php echo "<h3>By age " . $age_retirement . " you will have $" . $last_total . ".</h3>";
-              echo "<p><h3>That is $" . $last_inflation . " when adjusted for " . $inflation . "% inflation.</h3>"?>
+        <?php echo "<h3>By age " . $age_retirement . " you will have $" . number_format($last_total, 2, '.', '') . ".</h3>";
+              echo "<p><h3>That is $" . number_format($last_inflation, 2, '.', '') . " when adjusted for " . $inflation . "% inflation.</h3>"?>
     </div>
 <?php
     include "view/footer.php";

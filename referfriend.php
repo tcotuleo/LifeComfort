@@ -42,11 +42,12 @@
             $mail->Subject = "A recommendation to use LifeComfort calculator";
             $mail->Body = "<b>Hi,". $username. " has invited you to try LifeComfort retirement calculator. Click the link below to go to the website.<br/><br/><a href='http://localhost:8000/login.php'>LifeComfort.com</a></b>";
             $mail->AddAddress($email);
-             if(!$mail->Send()){
-                    echo "<script type='text/javascript'>alert('Mailer Error: ')</script>" . $mail->ErrorInfo;
+            if(!$mail->Send()){
+                    echo "<div style='color:#FFFFFF'>Mailer Error: Email not sent.</div>";
+                    echo $mail->ErrorInfo;
             }
             else{
-                    echo "<script type='text/javascript'>alert('Your recommendation email to ". $email . " has been sent.)</script>";
+                    echo "<div style='color:#FFFFFF'>Your recommendation email has been sent.</div>";
             }
        
         
@@ -55,15 +56,15 @@
 }
 ?>
 <div class='login-card'>
-                    <h1>Refer Friend</h1>
-                    <form action='' method='post'>
-                        <table class="mytable">
-                        <input type='text' name='email' placeholder='Email'>
-                        <input type='submit' name='send' class='login login-submit' value='Submit'>
-                        </table>
-                    </form>
+    <h1>Refer Friend</h1>
+    <form action='' method='post'>
+        <table class="mytable">
+        <input type='text' name='email' placeholder='Email'>
+        <input type='submit' name='send' class='login login-submit' value='Submit'>
+        </table>
+    </form>
 
-                    <div class='login-help'>
-                        <a href='website.php'>Cancel</a>
-                    </div>
-                </div>
+    <div class='login-help'>
+        <a href='website.php'>Cancel</a>
+    </div>
+</div>
