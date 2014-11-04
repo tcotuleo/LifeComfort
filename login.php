@@ -21,7 +21,11 @@
     
     //Display the logged in if a user already logged in.
     if(isset($username) && isset($password)){
-        echo "You are already logged in as <b>$username</b>. please continue on our <a href=website.php><button type='button'>Main Page</button></a>";
+        echo "<div class='login-card'>
+        <div class='login-help'> <h1>Welcome, ".$username. "<h1> <br />
+            <a href='logout.php'>Logout</a> • <a href='website.php'>Main Page</a>
+        </div>
+    </div>";
     }
     else{
         

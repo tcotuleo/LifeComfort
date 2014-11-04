@@ -15,8 +15,7 @@
     }
 
     //If no user is logged in than display the main login page.
-    if(!isset($username) && !isset($password)){
-        
+    if(!isset($username) && !isset($password)){    
         include "login.php";
         //echo "<h3>Welcome Guest! </h3><br> <a href=login.php><button type='button'>Login</button></a> | "
             //. "<a href=register.php><button type='button'>Register</button></a>";

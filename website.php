@@ -14,18 +14,30 @@
     if (isset($_SESSION['username']) && isset($_SESSION['password'])){
         $username = $_SESSION['username'];
         $password = $_SESSION['password'];
-    } else {
-        echo "<script type='text/javascript'>alert('Both session variables are not set.')</script>";
     }
+//    } else {
+//        echo "<script type='text/javascript'>alert('Both session variables are not set.')</script>";
+//    }
 
     //If no user is logged in then display the main login page.
     if(!isset($username) && !isset($password)){
-        echo "Welcome Guest! <br> <a href=login.php><button type='button'>Login</button></a> | <a href=register.php><button type='button'>Register</button></a>";
+        echo "<div class='login-card'>
+        <div class='login-help'> <h1>Welcome, guest<h1> <br />
+            <a href='login.php'>Login</a> • <a href='Register.php'>Register</a>
+        </div>
+    </div>";
         exit();
     }
     else{
-        echo "<p class='pos_fixed'>Welcome, <font color='red'>".$username."</font> <a href=logout.php><button type='button'>Logout</button></a></p>";
-        echo "<a href=referfriend.php><button type='button'>Refer a friend</button></a>";
+        echo "<div class='userlogin-card'>
+                    <p>Welcome, <font color='red'>".$username."</font>
+                    
+                    <div class='login-help'>
+                      <a href='logout.php'>Logout</a> • <a href='referfriend.php'>Refer a friend</a>
+                    </div>
+                </div>";
+       
+       
         
     }
 
@@ -213,7 +225,7 @@
     </script>
     
     <!--Display the values form -->
-    <div class='login-card' style="margin-left: 10px;">
+    <div class='values-card' style="margin-left: 10px;">
         
             <h1>Values </h1>
             <form action='website.php' method='post'>
@@ -240,7 +252,7 @@
     </div>
         
     <!--Display the chart -->
-    <div id="chart_div" style="width: 700px; height: 400px; margin-right: 10px;"></div>
+    <div id="chart_div" style="width: 700px; height: 400px;"></div>
 
     <!--Display the summary message -->
     <div id="message">
