@@ -252,7 +252,7 @@
     </div>
         
     <!--Display the chart -->
-    <div id="chart_div" style="width: 900px; height: 500px;"></div>
+    <div id="chart_div" style="width: 700px; height: 400px;"></div>
 
     <!--Display the summary message -->
     <div id="message">
