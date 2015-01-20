@@ -74,35 +74,56 @@
                     $pass_check = mysql_query("SELECT * FROM users WHERE username='$getusername' AND id='$id'");
                     $row3 = mysql_fetch_array($pass_check);
                     $email = $row3['email'];
+                    $select_pass = mysql_query("SELECT * FROM users WHERE username='$getusername' AND id='$id' AND email='$email'");
+                    $row4 = mysql_fetch_array($select_pass);
+                    $real_password = $row4['password'];
                     
                     //Check if the entered password matches the associated username in our database.
                     if($getemail != $email){
-
-//                        echo "You must enter the correct <font color='red'>EMAIL</font> address associated with your username. $form";
                         echo "<script type='text/javascript'>alert('You must enter the correct EMAIL address associated with your username.')</script>";
                         echo $form;
                         exit();
-                    }else{
-
+                    }
+                    else{
                         //Now if everything is correct let's finish his/her change password request 
-                        $_SESSION["username"] = $getusername;
-                        $_SESSION["email"] = $getemail;
-                        include 'updatepass.php';  
+                        //$_SESSION["username"] = $getusername;
+                        //$_SESSION["email"] = $getemail;
+                        include "smtpmail/classes/class.phpmailer.php"; // include the class name
+                            //if(isset($_POST["send"])){
+                            $email = $_POST["email"];
+                            $mail = new PHPMailer(); // create a new object
+                            $mail->IsSMTP(); // enable SMTP
+                            $mail->SMTPDebug = 1; // debugging: 1 = errors and messages, 2 = messages only
+                            $mail->SMTPAuth = true; // authentication enabled
+                            $mail->SMTPSecure = 'ssl'; // secure transfer enabled REQUIRED for GMail
+                            $mail->Host = "smtp.gmail.com";
+                            $mail->Port = 465; // or 587
+                            $mail->IsHTML(true);
+                            $mail->Username = "lifecomfortrc@gmail.com";
+                            $mail->Password = "Lifecomfort123";
+                            $mail->SetFrom("lifecomfortrc@gmail.com");
+                            $mail->Subject = "Lifecomfort Password reset request";
+                            $mail->Body = "<b>Hi,". $getusername. " your password is ". $real_password. "<br/><br/><a href='http://localhost:8000/login.php'>LifeComfort.com</a></b>";
+                            $mail->AddAddress($getemail);
+                            
+                            if(!$mail->Send()){
+                                echo "<script type='text/javascript'>alert('Mailer Error: ')</script>" . $mail->ErrorInfo;
+                            }
+                            else{
+                                echo "<script type='text/javascript'>alert('Your recommendation email to ". $email . " has been sent.)</script>";
+                            }
                     }             
                 }
                 else{
-//                    echo "You must enter your <font color='red'>Email</font>. $form";
                     echo "<script type='text/javascript'>alert('You must enter your EMAIL.')</script>";
                     echo $form;
                 }      
             }
             else{
-                echo "You must enter your <font color='red'>USERNAME</font>. $form";
                 echo "<script type='text/javascript'>alert('You must enter your USERNAME.')</script>";
                 echo $form;
             }
         }
-        //This else statement will run if user didn't enter any data in the change password request form.
         else {
             echo $form;
         }

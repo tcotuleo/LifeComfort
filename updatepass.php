@@ -28,7 +28,7 @@
                     </form>
 
                     <div class='login-help'>
-                      <a href='index.php'>Cancel</a>
+                      <a href='adminpanel.php'>Cancel</a>
                     </div>
                 </div>";
     
@@ -70,7 +70,7 @@
                         echo "<div class='displaymessage-card'>"
                         . "<p>Your password has been changed successfully. Thank you!</p>"
                         . "<div class='login-help'>
-                      <a href='login.php'>Login</a>
+                      <a href='adminpanel.php'>Go back</a>
                     </div></div>";
                     }
                     else{

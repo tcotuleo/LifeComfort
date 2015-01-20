@@ -7,7 +7,7 @@
     //Align all text to center
     echo "<div style='text-align: center'>";
     
-    $page_title = "Login/Register";
+    $page_title = "Graph page";
     include_once "view/header.php";
     
     //Check if a user is already logged in

@@ -1,13 +1,13 @@
 <?php
     include "view/header.php";
     
-    $page_title = "Register Page";
+    $page_title = "Admin Add a user";
     //Align all text to center
     echo "<div style='text-align: center'>";
 
     //Create a varible to display the register form.
     $form = "<div class='login-card'>
-                <h1>Register</h1><br>
+                <h1>Add a User</h1><br>
                 <form action='register.php' method='post'>
                     <input type='text' name='user' placeholder='Username'>
                     <input type='text' name='email' placeholder='Email'>
@@ -17,10 +17,10 @@
                 </form>
 
                 <div class='login-help'>
-                  <a href='index.php'>Go back</a>
+                    <a href='adminpanel.php'>Go back</a>
                 </div>
             </div>";
-  
+    
     //This if statement will run if the register button is pressed.
     if (isset($_POST['registerbtn'])){
         
