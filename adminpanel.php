@@ -36,7 +36,7 @@
                         <input type='submit' class='login login-submit' value='Add User'> 
                     </form>
                     
-                    <form>
+                    <form action='admindeleteuser.php' method='post'>
                         <input type='submit' class='login login-submit' value='Delete User'>
                     </form>
                     
@@ -44,7 +44,7 @@
                         <input type='submit' class='login login-submit' value='Reset Pass'>
                     </form>
                     
-                    <form>
+                    <form action='adminfinduser.php' method='post'>
                         <input type='submit' class='login login-submit' value='Find Username'>
                     </form>
                     
